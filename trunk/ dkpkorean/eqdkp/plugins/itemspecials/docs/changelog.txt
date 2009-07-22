@@ -1,0 +1,300 @@
+ * Project:     EQdkp ItemSpecials
+ * License:     Creative Commons - Attribution-Noncommercial-Share Alike 3.0 Unported
+ * Link:		    http://creativecommons.org/licenses/by-nc-sa/3.0/
+ * -----------------------------------------------------------------------
+ * Began:       2005
+ * Date:        $Date: 2009-03-04 00:15:37 +0100 (Mi, 04 Mrz 2009) $
+ * -----------------------------------------------------------------------
+ * @author      $Author: wallenium $
+ * @copyright   2005-2008 Simon (Wallenium) Wallmann
+ * @link        http://eqdkp-plus.com
+ * @package     itemspecials
+ * @version     $Rev: 4084 $
+ * 
+ * $Id: changelog.txt 4084 2009-03-03 23:15:37Z wallenium $
+
+Changelog
+--------------------------------------------------------------------------------------------------
+5.0.2 [03/04/2009]
+  Fixed - [#1470] Use User ID instead of Isername to prevent collation errors
+  Fixed - [#1474] remove eqdkp.com Link out of plugin information
+  Fixed - [#1475] SQL Error on update Items
+  Implemented - [#1472] Remove Database Globals
+  Implemented - [#1473] Add Itemspecials Menu Icon
+
+5.0.1 [01/07/2009]
+	Fixed - [#1471] Add English Tier names
+
+5.0.0 [12/23/2008]
+  Fixed - [#1250] Spelling error in SetRight
+  Fixed - [#1326] [SetRight] Item Count not working
+  Implemented - [#1313] Class ID instead of Class names
+  Implemented - [#1312] Multigame compatible
+  Implemented - [#1314] [wow] Tier 7 + Tier 7.5
+  Implemented - [#1327] [lotro] Add Setitems T1 + T2 +T3
+  Implemented - [#1328] [lotro] Add Specialitems
+  Implemented - [#1329] Removed outdated Language files
+  Implemented - [#1330] New Tooltip Layout
+  Implemented - [#1331] Remove Page Execution Time thing
+
+4.2.3 [11/18/2008]
+  Fixed - [#1256] Unable to fill SpecialItems
+  Fixed - [#1270] DK Class Image not working
+  Fixed - [#1271] Class colors not working
+
+4.2.2 [09/11/2008]
+	Implemented - [#1240] Support new PLUS templates
+	Implemented - [#1241] Use new updater class
+
+4.2.1 [27/04/2008]
+	Fixed - [#699] Tier 6 is not showing in setitems when class selected
+	Fixed - [#713] T6 Priest leggings wrong item
+	Fixed - [#954] Tier6 set not showing up in Set Progress
+	Fixed - [#957] root_path coold be highjacked if register_globals = on
+	Implemented - [#698] Update all classes to wpfc 1.0
+	Implemented - [#953] Convert to jQuery Class
+	Implemented - [#955] Three new Tier6 items
+
+4.1.0 [09/16/2007]
+	Fixed - [#620] Setrights: Wrong item count
+	Fixed - [#621] Setrights: PHP Errors on Page header
+	Implemented - [#532] Tier 6 Set
+	Implemented - [#619] Rewrite whole SetRights API & Setrights Page
+
+4.0.1 [04/20/2007]
+	Done - [#385] Removed Key to Naxxramas
+	Fixed - [#382] Wrong Calculation of setitems
+	Fixed - [#384] Update Updater Class to newest Version
+	Fixed - [#386] Fixed error during installation
+	Implemented - [#383] Remove hardcoded itemstats links
+
+4.0.0 [03/09/2007]
+	Done - [#372] Rework French Translation (Shakira)
+	Won't implement - [#338] Add Tier Selection in User Settings
+	Fixed - [#322] wrong link to viewmember.php in tollfreeitems.php
+	Fixed - [#346] Fixed Double Link issue (this time i hope forever)
+	Fixed - [#349] Some Comboboxes in Configuration General have no function
+	Fixed - [#371] Add Help for users and Admins which Item/Questitem to add.
+	Fixed - [#340] Fix the Table Layout width in Setprogress per Class
+	Fixed - [#370] Itemstats was initialized by the plugin_class.php
+	Fixed - [#375] Error on installation with ItemStats 1.5.5
+	Fixed - [#376] WowMoonClaw01V Template Error
+	Implemented - [#198] Add Tier 4 Set
+	Implemented - [#342] Core Tier Data to an own data file
+	Implemented - [#343] Dynamic Header Texts in setprogress
+	Implemented - [#344] Create Update File 3.0.x to 4.0.0
+	Implemented - [#345] Removed 'Double Link issue' from FAQ
+	Implemented - [#347] Implement Update Check Class instead of hardcoded Update Checker
+	Implemented - [#348] Select Tier in Setting for Calculation in SetRight
+	Implemented - [#335] Update JS Window Class to v1.2.1
+	Implemented - [#336] implement updater for easier Versionupdate
+	Implemented - [#337] Add Tier 5 Set
+	Implemented - [#339] Search for Questitems &amp; Tieritems (only user entries!)
+	Implemented - [#341] Move each tier set to an own data file
+	Implemented - [#373] Rewrite Itemstats Update
+	Implemented - [#374] New Tooltip Library instead of OverLib
+
+3.0.2 [01/11/2007]
+	Fixed - [#201] duplicated Links in the admin Panel
+	Fixed - [#301] Filter (class/armor) display fix
+	Implemented - [#312] Add 'Double Link Problem' to FAQ (readmefirst)
+	Implemented - [#313] 'Tier3 not showing' to FAQ (readmefirst)
+
+3.0.1 [12/15/2006]
+	Fixed - [#262] Update JS windows to current Version
+	Fixed - [#263] Changed Druid Setitems in German Language
+
+3.0.0 [12/01/2006]
+	Fixed - [#147] Update the Update check (timeout Problem)
+	Fixed - [#148] window.js update
+	Fixed - [#156] Atiesh count bug
+	Fixed - [#157] English Classnames: error on showup.
+	Fixed - [#168] SQL-Error on saving the settings
+	Fixed - [#178] Leaving Javascript Popup causes lost of Header
+	Fixed - [#187] Items are not shown at specialitems.php
+	Fixed - [#191] Parse Error with update check function
+	Fixed - [#193] correction of the english language file by a native english
+	Fixed - [#194] Setitems: Reduce size of Header images & dynamic classtext
+	Fixed - [#199] Specialitems bug when clicking on non searchable header image
+	Fixed - [#200] setright: colored classnames won't work
+	Fixed - [#231] Delete unused old template files
+	Implemented - [#83] Burning Crusade compatible classes
+	Implemented - [#84] Rework the settings, toggle categries for better overview
+	Implemented - [#136] Use Itemtats to correct Itemnames when reading from DB
+	Implemented - [#146] Note fiield for Drag'n'Drop things
+	Implemented - [#177] Oldstyle Links to Items instead of JS PopUP window @setitem
+	Implemented - [#158] Settings: info symbol: on-mouseover hover infos (overlib alternative)
+	Implemented - [#159] Automatic addition of new settings in database ( no more sql files)
+	Implemented - [#164] rework the Custom Itemaddition, only one input &amp; autocomplete
+	Implemented - [#165] Set Item Addition in Backend to avoid satistic errors
+	Implemented - [#175] ItemStats 1.50++ compatibility
+	Implemented - [#176] Move Itemstats Additions to own itemstatsadditon Class
+	Implemented - [#190] User can update their set pieces by their own
+	Implemented - [#192] Possibility to disable update check
+	Implemented - [#232] CSS Styled Bar graphics
+
+2.0.0 [10/26/2006]
+	Fixed - [#3] Setright calculated with 0DKP Items
+	Fixed - [#8] *.png Fix for IE 6
+	Fixed - [#10] Save function: Array Layout
+	Fixed - [#35] Add ItemSpecial Icon to Credits
+	Fixed - [#43] if no item @cache, show ? or something like that
+	Fixed - [#44] whitepage bug
+	Fixed - [#47] wrong Shaman books in german data file
+	Fixed - [#79] Drag&#039;n&#039;Drop issues
+	Fixed - [#80] Bug if items = en and class = en
+	Fixed - [#81] rename viewitem.php
+	Fixed - [#107] css bug: i added the bar css to the class css,
+	Implemented - [#1] Sort Items &amp; add custom Items
+	Implemented - [#2] Plugin API
+	Implemented - [#4] Tier-Status-Summ on Tieroverview
+	Implemented - [#5] New Processbars
+	Implemented - [#6] Credits-Dialogue
+	Implemented - [#7] Tier3/AQ Set: Parse Questitem instead of setitem
+	Implemented - [#9] New Itemstats Cache Download
+	Implemented - [#37] Add Updatecheck
+	Implemented - [#45] French translation
+	Implemented - [#46] Split the data arrays per language
+	Implemented - [#48] Staff of Atiesh
+
+1.0.0 [08/18/2006]
+    * Added possibilty of showing Header images & crosses in the members area (as requested in the forum)
+    * Added Footer @Setprogress-startpage
+    * Added Exec. Time @Setitems and Specialitems
+    * Added settings for set progress status page
+    * Added Class Headerimages (Credits to Seraph Creations)
+    * Added Naxx-Entry to the IS-reload
+    * Added visual saved msg
+    * Rewrote large bits of specialitems, should work 10 times faster ;)
+    * Changed Description of the English Naxxramas-entry
+    * Changed the way the sort link is added, should work now on all systems
+    * Changed name of 'setitems' to 'set progress'
+    * Changed the default settings turned some settings on by default.
+    * Changed the "Set to defaults" Code
+    * Bugfix: Ring is now only shown in the tier3 set...
+    * Bugfix: DKP Values are coloured now
+    * Bugfix: HTML in ItemStats Replacement should work now
+    * Bugfix: Class Images/ Class Text in options should work now as intended
+    * Bugfix: DKP Value Row: correct size now ;)
+    * Code Cleanup
+    * Added Readme.txt
+
+0.8.7 [07/17/2006]
+    * Fixed Bug in WoWMaevahEmpire
+    * Fixed Bug @install ( if itemstats folder but no itemstats cache)
+    * Fixed Bug @setright on line 264 if no members are in the database
+
+0.8.6 [07/13/2006]
+    * Total DKP now sortable
+    * Added Eye of C'Thun
+    * Added "Entry to Naxxramas / Zugang zu Naxxramas" (Itemstats + all data)
+
+0.8.5 [07/13/2006]
+    * Bugfix with the total dkp output
+    * small template fixes/additions
+    * Total DKP on SpecialItems page
+    * Bugfix: Reset Header-Dwonload-Cache should work now on all systems
+
+0.8.4 [07/12/2006]
+    * Itemstats Reload-Cache-Protection is now shown in the settings, you can reset it there ;)
+    * 'Set to defaults'-Button in settings
+    * Warning if the settings are empty
+    * changed the method the settings are saved, shold be more secure now (and less 'empty-settings should be saved)
+    * AQ Mounts are now shown if you've got more than one
+    * moved some static texts to the language files
+    * Added an 'home-link' to the classic-setitems-view
+    * Added Total DKP to setitems
+    * minor templatechanges & fixes
+
+0.8.3 [07/11/2006]
+    * Another Specialitems template fixes.
+    * fixed AQ datafile-bug in DE loc.
+
+0.8.2 [07/10/2006]
+    * Specialitems template fixes.
+
+0.8.1 [07/09/2006]
+    * Bugfix: nonset/setitems table settings wasn't saved
+    * renamed two header captions in DE loc
+    * AQ Book tooltip fix
+
+0.8.0 [07/09/2006]
+    * changed the data file, reduced file size
+    * added tier name in the header
+    * minimize/maximize tier
+    * Tiers on one page
+    * Added AQ Tier (thx to trionix)
+    * Changed some German Tier Names because of Patch 1.11
+    * Cleaned up Code, commented a bit, deleted old crap
+    * Option for download HeaderImages in SpecialItems (via Itemstats)
+    * Added optional overview page for setitems
+    * Added AQ Books
+    * changed the way of the tier selection (speed fix)
+    * Bugfix: Cleaned the order of the setitems (thx to trionix)
+    * Bugfix: Fixed Error when disabling the Tier1 Set & old layout
+    * Bugfix: Some misspelled EN Tier3 Names
+    * Bugfix: Class Selection on Specialitems page didn't work
+
+0.7.1 [06/26/2006]
+    * Bugfix: Config wasn't saved on all SQL Versions. Rewrote the save function
+
+0.7.0 [06/23/2006]
+    * added configuration in backend
+    * changed all old configvars to the new ones
+    * Added Tier3 (Patch 1.11)
+    * Changed DE names to new translations (Patch 1.11)
+    * Choose which Tier to show
+    * Changed the aqmount display: it shows now the mount you own ;)
+    * Bugfix: RowColorChange in Setitems
+    * Bugfix: AQ Nount is now displayed
+
+0.6.3 [06/14/2006]
+    * Bugfix: Misspelling in Datafile ( DE: Dragon SinneW)
+    * Bugfix: Stylesheet error
+    * reenabled itemstats in config (too many "i see only red crosses")
+    * some minor bugfixes
+
+0.6.2 [06/10/2006]
+    * Bugfix: Misspellings in English Lang-file
+    * CHanged the way to get the Classname, the old method wasn't really good.
+
+0.6.1 [06/10/2006]
+    * Bugfix: Shaman misspelling
+    * Fixed the issue with the german itemnames and the english classnames
+
+0.6.0 [06/03/2006]
+    * Bugfix: AQ Mount Image shown as intended
+    * Bugfix: Setrights should work now (Count of Setitems)
+    * Bugfix: Specialitem Head of Onyxia: fixed table width
+    * Class names (Images) are now converted to English, delete the old image folder and reupload.
+    * ArrayNames in Setitems are English now.
+    * ClassNames on Setitems Page: User default language
+    * Added Blue Dragon Sinnew
+    * Added Sort Feature for Specialitems
+    * Added all for config implementation, there's a "not yet implemented" text at the moment
+    * Added all config sql fields ( for a future release)
+
+0.5.0 [05/31/2006]
+    * Head of Ossirian
+    * Class, Name, DKP Value in Setrights (if enabled, default = disabled)
+    * Hide Hidden membergroups/ inactive members
+    * Show only Class Icons (Hide Class name)
+    * Bugfix: Panther Bag is now working as intended
+    * Bugfix: Corrected Permissions on Specialitems page
+    * Bugfix: AQ Header Image was wrong
+    * added all the templates of eqdkp plus
+
+0.4.1
+    * Bugfix: Hunter Icons
+
+0.4.0
+    * Added Panther Sack
+    * Added AQ Mount
+    * Added Onyxia Scale Cloak
+    * Rank/ Points/ Class enable/disable
+    * Header Images instead of Text
+    * select/deselect the specialitems (you can choose which one to show) in the config
+    * fixed code for speed
+    * Itemstats can be set to false
+    * you can choose if inactive/hidden groups should be shown or not.
+    * colored class names & class images

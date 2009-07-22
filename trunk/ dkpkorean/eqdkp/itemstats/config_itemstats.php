@@ -18,6 +18,15 @@ if ($conf_plus['pk_is_webdb']=='armory_wowhead')
 	$GLOBALS["prio"][] = 'armory';
 	$GLOBALS["prio"][] = 'wowhead';
 }
+elseif ($conf_plus['pk_is_webdb']=='inven')
+{
+	$GLOBALS["prio"][] = 'inven';	
+}
+elseif ($conf_plus['pk_is_webdb']=='armory_inven')
+{
+	$GLOBALS["prio"][] = 'armory';	
+	$GLOBALS["prio"][] = 'inven';
+}
 elseif ($conf_plus['pk_is_webdb']=='wowhead_armory')
 {
 	$GLOBALS["prio"][] = 'wowhead';	
@@ -38,7 +47,7 @@ elseif ($conf_plus['pk_is_webdb']=='buffed')
 else  //default
 {
 	$GLOBALS["prio"][] = 'armory';
-	$GLOBALS["prio"][] = 'wowhead';	
+	$GLOBALS["prio"][] = 'inven';	
 }
 
 
@@ -64,11 +73,15 @@ elseif ((($GLOBALS["prio"][0] == 'wowhead') or ($GLOBALS["prio"][0] == 'armory')
 	$GLOBALS["armory_lang"][]='de';
 	$GLOBALS["armory_lang"][]='en';
 	$GLOBALS["armory_lang"][]='fr';
+	$GLOBALS["armory_lang"][]='kr';
 
 	//EU / US
 	 if($conf_plus['pk_server_region'] =="eu")
  	 {
 		$GLOBALS["armory_region_server"]='http://armory.wow-europe.com/';
+ 	 }elseif($conf_plus['pk_server_region'] =="kr")
+ 	 {
+		$GLOBALS["armory_region_server"]='http://kr.wowarmory.com/';
  	 }else{
 		$GLOBALS["armory_region_server"]='http://armory.worldofwarcraft.com/';
  	 }

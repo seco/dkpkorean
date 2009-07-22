@@ -191,7 +191,7 @@ class ItemCache
     	{
     		$errorfile = '/../templates/popup-error_blasc.tpl';
     	}
-        // Objet non trouvé, on renvoi un objet gris et une erreur :)
+        // Objet non trouv? on renvoi un objet gris et une erreur :)
         $item['name'] = $name;
         $item['id'] = '0';
         $item['lang'] = 'na';
@@ -205,14 +205,14 @@ class ItemCache
     function getItemFromCache($name,$id=0,$lang="") {
       if (isset($_GET["nocache"])) return false;
       //=============== DEBUT XML_CACHE =============================================================
-        // On vérifie qu'il y a pas un fichier dans xml_cache
-        // POUR LA RECHERCHE DE FICHIER CACHE, il faut encodé le nom en UTF8 sinon la recherche est mauvaise quand le nom comporte des accents.
+        // On v?ifie qu'il y a pas un fichier dans xml_cache
+        // POUR LA RECHERCHE DE FICHIER CACHE, il faut encod?le nom en UTF8 sinon la recherche est mauvaise quand le nom comporte des accents.
         if ($id != 0)
-        $search_name = utf8_encode($id.$lang);
+        $search_name = mb_convert_encoding($id.$lang,"UTF-8","EUC-KR");
         else
-        $search_name = utf8_encode($name);
+        $search_name = mb_convert_encoding($name,"UTF-8","EUC-KR");
 
-        // On fait attention aux failles de sécurité
+        // On fait attention aux failles de s?urit?
         $search_name = str_replace("..", ".", $search_name);
         $search_name = str_replace("/", "", $search_name);
         $search_name = str_replace("\\", "", $search_name);
@@ -223,13 +223,13 @@ class ItemCache
             echo "search in :" . path_cache . $search_name . "<br/>";
         }
 
-        // On vérifie si il y a pas un fichier cache pour cet objet, ca permet de créer les objets qu'on a envie.
+        // On v?ifie si il y a pas un fichier cache pour cet objet, ca permet de cr?r les objets qu'on a envie.
         $file = dirname(__FILE__) . '/../'.path_cache . $search_name. ".itemcache";
         if (file_exists($file) && (time()-filemtime($file)<=86400)) {
             if (debug_mode == true)
                 echo "Object found !<br/><br/>";
 
-            //echo "Fichier cache trouvé !<br/>";
+            //echo "Fichier cache trouv?!<br/>";
                    $item = file_get_contents($file);
                    if (!$item)
                       return false;
@@ -247,7 +247,7 @@ class ItemCache
     {
       if (isset($_GET["nocache"])) return false;
 
-        $f=@fopen(dirname(__FILE__) . '/../'.path_cache . utf8_encode($item['item_name']). ".itemcache","w");
+        $f=@fopen(dirname(__FILE__) . '/../'.path_cache . mb_convert_encoding($item['item_name'],"UTF-8","EUC-KR"). ".itemcache","w");
         if (!$f)
         {
           return false;
@@ -257,7 +257,7 @@ class ItemCache
           fclose($f);
         }
 
-        $f=@fopen(dirname(__FILE__) . '/../'.path_cache . utf8_encode($item['item_id'].$item['item_lang']). ".itemcache","w");
+        $f=@fopen(dirname(__FILE__) . '/../'.path_cache . mb_convert_encoding(($item['item_id'].$item['item_lang']),"UTF-8","EUC-KR"). ".itemcache","w");
         if (!$f)
         {
           return false;

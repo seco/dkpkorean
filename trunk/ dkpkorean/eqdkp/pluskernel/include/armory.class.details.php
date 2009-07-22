@@ -22,7 +22,8 @@ class ArmoryCharLoader
 	var $build		= '2508200701';
 	var $links		= array(
 										'eu'		=> 'http://eu.wowarmory.com/',
-										'us'		=> 'http://www.wowarmory.com/'
+										'us'		=> 'http://www.wowarmory.com/',
+										'kr'		=> 'http://kr.wowarmory.com/'
 									);
 	
 	function ArmoryCharLoader($utf8test)
@@ -45,8 +46,10 @@ class ArmoryCharLoader
 	
 	function BuildLink($loc, $user, $server, $mode='char')
 	{
-		$server = ($this->isUTF8) ? stripslashes(rawurlencode($server)) : stripslashes(rawurlencode(utf8_encode($server)));
-		$user = ($this->isUTF8) ? stripslashes(rawurlencode($user)) : stripslashes(rawurlencode(utf8_encode($user)));
+
+		$server = ($this->isUTF8) ? stripslashes(rawurlencode($server)) : stripslashes(rawurlencode(mb_convert_encoding($server,"UTF-8","EUC-KR")));
+		$user = ($this->isUTF8) ? stripslashes(rawurlencode($user)) : stripslashes(rawurlencode(mb_convert_encoding($user,"UTF-8","EUC-KR")));
+//    $user = stripslashes(rawurlencode($user));
 		
 		if($mode == 'char')
 		{
@@ -58,6 +61,7 @@ class ArmoryCharLoader
 		{
 			$url = $this->links[$loc].'guild-info.xml?r='.$server.'&n='.$user;
 		}
+
 		return $url;
 	}
 

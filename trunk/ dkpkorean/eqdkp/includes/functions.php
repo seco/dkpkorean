@@ -403,7 +403,7 @@ function generate_pagination($base_url, $num_items, $per_page, $start_item, $sta
 
     $on_page = floor($start_item / $per_page) + 1;
 
-    //«»
+    //ã‚»
 
     $pagination = '';
     $pagination = ( $on_page == 1 ) ? '<b>1</b>' : '<a href="'.$base_url . $uri_symbol . $start_variable.'='.( ($on_page - 2) * $per_page).'" title="'.$user->lang['previous_page'].'" class="copy">&lt;</a>&nbsp;&nbsp;<a href="'.$base_url.'" class="copy">1</a>';
@@ -490,7 +490,7 @@ function redirect($url, $return = false, $extern=false)
         echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">';
         echo '<html>';
         echo '<head>';
-        echo '<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">';
+        echo '<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">';
         echo '<meta http-equiv="refresh" content="0; url=' . str_replace('&', '&amp;', $location) .'">';
         echo '<title>Redirect</title>';
         echo '</head>';

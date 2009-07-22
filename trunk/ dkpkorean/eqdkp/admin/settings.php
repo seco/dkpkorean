@@ -514,6 +514,7 @@ class EQdkp_Config extends EQdkp_Admin
                       'en'  => 'English',
                       'de'  => 'German',
                       'ru'  => 'Russian',
+                      'kr'  => 'Korean',
                       );
   foreach ( $glanguagearray as $gamelang=>$glangname){
     $tpl->assign_block_vars('gamelang_row', array(
@@ -534,7 +535,8 @@ class EQdkp_Config extends EQdkp_Admin
           'en_US'   => 'English',
           'de_DE'   => 'German',
           'fr_FR'   => 'French',
-          'ru_RU'	=> 'Russian'
+          'ru_RU'	=> 'Russian',
+          'ko_KR' => 'Korean'
   );
 
   foreach ( $locale_array as $localss=>$langname )

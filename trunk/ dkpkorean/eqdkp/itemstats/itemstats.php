@@ -25,6 +25,7 @@ if(strtolower($eqdkp->config['default_game']) == 'wow')
 	include_once(dirname(__FILE__) . '/includes/blasc.php');
 	include_once(dirname(__FILE__) . '/includes/wowhead.php');
 	include_once(dirname(__FILE__) . '/includes/armory.php');
+  include_once(dirname(__FILE__) . '/includes/inven.php');
 }
 elseif (strtolower($eqdkp->config['default_game']) == 'lotro')
 {
@@ -101,6 +102,7 @@ class ItemStats
     var $info_site_wowdbu;
     var $info_site_blasc;
     var $info_site_wowhead;
+    var $info_site_inven;
 
     // Constructor
 	function ItemStats($bNewConnection = false, $openConnection = 0)
@@ -158,12 +160,13 @@ class ItemStats
         if(strtolower($eqdkp->config['default_game']) == 'wow')
 		{
 			$this->info_site_allakhazam = new ParseAllakhazam();
-	        $this->info_site_thottbot = new ParseThottbot();
-	        $this->info_site_judgehype = new ParseJudgehype();
-	        $this->info_site_wowdbu = new ParseWowdbu();
-	        $this->info_site_blasc = new ParseBlasc();
+	    $this->info_site_thottbot = new ParseThottbot();
+	    $this->info_site_judgehype = new ParseJudgehype();
+	    $this->info_site_wowdbu = new ParseWowdbu();
+	    $this->info_site_blasc = new ParseBlasc();
 			$this->info_site_wowhead = new ParseWowhead();
 			$this->info_site_armory = new ParseArmory();
+			$this->info_site_inven = new ParseInven();
 		}
 		elseif (strtolower($eqdkp->config['default_game']) == 'lotro')
 		{
@@ -196,6 +199,7 @@ class ItemStats
 		        $this->info_site_blasc->close();
 				$this->info_site_wowhead->close();
 				$this->info_site_armory->close();
+				$this->info_site_inven->close();
 			}
 			elseif (strtolower($eqdkp->config['default_game']) == 'lotro')
 			{
@@ -231,7 +235,7 @@ class ItemStats
 		if (!isset($this->item_cache))
 		{
 	        if (debug_mode == true)
-	            echo "==> GROSSE ERREUR : Utilisation du Itemcache sans qu'il soit chargï¿½, ni connectï¿½<br/>" ;
+	            echo "==> GROSSE ERREUR : Utilisation du Itemcache sans qu'il soit chargå ? ni connectå ?br/>" ;
 		}
         $params = explode('/',$item_name);
         $item_name=array_shift($params);
@@ -578,10 +582,10 @@ class ItemStats
 
 
         //=============== DEBUT XML_CACHE =============================================================
-        // On vérifie qu'il y a pas un fichier dans xml_cache
-        // POUR LA RECHERCHE DE FICHIER CACHE, il faut encodé le nom en UTF8 sinon la recherche est mauvaise quand le nom comporte des accents.
-        $search_name = utf8_encode($name);
-        // On fait attention aux failles de sécurité
+        // On v?ifie qu'il y a pas un fichier dans xml_cache
+        // POUR LA RECHERCHE DE FICHIER CACHE, il faut encod?le nom en UTF8 sinon la recherche est mauvaise quand le nom comporte des accents.
+        $search_name = mb_convert_encoding($name,"UTF-8","EUC-KR");
+        // On fait attention aux failles de s?urit?
         $search_name = str_replace("..", ".", $search_name);
         $search_name = str_replace("/", "", $search_name);
         $search_name = str_replace("\\", "", $search_name);
@@ -592,13 +596,13 @@ class ItemStats
             echo "search in :" . path_cache . $search_name . "<br/>";
         }
 
-        // On vérifie si il y a pas un fichier cache pour cet objet, ca permet de créer les objets qu'on a envie.
+        // On v?ifie si il y a pas un fichier cache pour cet objet, ca permet de cr?r les objets qu'on a envie.
         if (file_exists(path_cache . $search_name))
         {
             if (debug_mode == true)
                 echo "Object found !<br/><br/>";
 
-            //echo "Fichier cache trouvé !<br/>";
+            //echo "Fichier cache trouv?!<br/>";
 	        if ($fp = fopen(dirname(__FILE__) . '/' . path_cache . '/' . $search_name, "r"))
             {
                 $data = "";
@@ -655,8 +659,11 @@ class ItemStats
                     $item = $this->info_site_blasc->getItem($name);
                 else if ($GLOBALS["prio"][$ct] == 'buffed')
                     $item = $this->info_site_blasc->getItem($name);
-				else if ($GLOBALS["prio"][$ct] == 'wowhead')
-		    		$item = $this->info_site_wowhead->getItem($name);
+        				else if ($GLOBALS["prio"][$ct] == 'wowhead')
+		            		$item = $this->info_site_wowhead->getItem($name);
+        				else if ($GLOBALS["prio"][$ct] == 'inven')
+		            		$item = $this->info_site_inven->getItem($name);
+		            		
                 else if ($GLOBALS["prio"][$ct] == 'armory')
                 {
 
@@ -741,8 +748,11 @@ class ItemStats
                 $item = $this->info_site_blasc->getItemId($id);
             else if ($GLOBALS["prio"][$ct] == 'buffed')
                 $item = $this->info_site_blasc->getItemId($id);
-	    else if ($GLOBALS["prio"][$ct] == 'wowhead')
+      	    else if ($GLOBALS["prio"][$ct] == 'wowhead')
                 $item = $this->info_site_wowhead->getItemId($id);
+      	    else if ($GLOBALS["prio"][$ct] == 'inven')
+                $item = $this->info_site_inven->getItemId($id);
+                
             else if ($GLOBALS["prio"][$ct] == 'armory')
                 $item = $this->info_site_armory->getItemId($id,$lang);
             if (!empty($item['link']))

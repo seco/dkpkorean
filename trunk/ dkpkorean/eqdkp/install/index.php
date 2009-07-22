@@ -181,7 +181,7 @@ class Template_Wrap extends Template
         @header('Cache-Control: no-store, no-cache, must-revalidate');
         @header('Cache-Control: post-check=0, pre-check=0', false);
         @header('Pragma: no-cache');
-        @header('Content-Type: text/html; charset=iso-8859-1');
+        @header('Content-Type: text/html; charset=EUC-KR');
         */
 
         $this->assign_vars(array(
@@ -266,7 +266,7 @@ $DEFAULTS = array(
     'table_prefix'  => 'eqdkp_',
     'dbal'          => 'mysql',
     'default_game'  => 'WoW',
-    'default_lang'  => 'german'
+    'default_lang'  => 'Korean'
 );
 $DBALS    = array(
     'mysql' => array(
@@ -294,9 +294,13 @@ $LOCALES = array(
 		'type'	=> 'fr_FR'
 		),
   'Russian' => array(
-		'label'	=> 'Ðóññêèé',
+		'label'	=> 'å¤”è‘ºå­º?,
 		'type'	=> 'ru_RU'
-		)
+		),
+	'Korean' => array(
+		'label'	=> 'Korean',
+		'type'	=> 'ko_KR'
+		),
 		
 	);
 
@@ -764,7 +768,8 @@ function process_step4()
     $glanguagearray = array(
                         'ru'  => 'Russian',
                         'en'  => 'English',
-                        'de'  => 'German'
+                        'de'  => 'German' ,
+                        'kr'  => 'Korean'
                         );
     foreach ( $glanguagearray as $gamelang=>$glangname){
       $tpl->assign_block_vars('gamelang_row', array(

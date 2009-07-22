@@ -4,7 +4,7 @@
 * ParseArmory
 * started: 13/06/2007
 *
-* author: Olivier Garb�
+* author: Olivier Garb?
 * email: ogarbe@gmail.com
 * description: create itemstats tooltips using armory
 *
@@ -46,7 +46,7 @@ include_once(dirname(__FILE__) . '/download_file.php');
 // The main interface to the Armory parser
 class ParseArmory
 {
-	var $urlprefix = 'www';
+	var $urlprefix = 'kr';
 	var $xml_parser;
 
 	function ParseArmory()
@@ -126,12 +126,14 @@ class ParseArmory
 
 
 	// Attempts to retrieve data for the specified item from Wowhead
-	function getItem($name,$language='fr', $region='', $searchagain=true)
+	function getItem($name,$language='kr', $region='', $searchagain=true)
     {
     	$region = ($region) ? $region : $this->urlprefix;
 
 		// Ignore blank names.
+
 		$name = trim($name);
+
 		if (empty($name)) { return null; }
 
 		$item = array('name' => $name);
@@ -140,7 +142,7 @@ class ParseArmory
 		$fixed_name = implode(' ', preg_split ("/[\s\+]+/", urldecode($name)));
 
 		// encode the name so it can be used to build the url
-		$encoded_name = urlencode(utf8_encode($fixed_name));//rawurlencode($fixed_name);
+		$encoded_name = urlencode(mb_convert_encoding($fixed_name,"UTF-8","EUC-KR"));//rawurlencode($fixed_name);
 		$encoded_name = str_replace('+' , '%20' , $encoded_name);
         $encoded_name = str_replace(' ' , '%20' , $encoded_name);
 
@@ -148,11 +150,12 @@ class ParseArmory
 		$xml_search_data = itemstats_read_url('http://'.$region.'.wowarmory.com/search.xml?searchType=items&searchQuery=' . $encoded_name, $language);
 		if (debug_mode == true)
 		{
+echo "<br><b>디버그 모드 위치 A!</b><br>";
         	echo "Search on the Armory site : " . $name." in the ".$language." language : http://".$region.".wowarmory.com/search.xml?searchType=items&searchQuery=" . $encoded_name."<br/>";
             var_dump($xml_search_data);
         }
 
-        if (strpos($xml_search_data,'<items>') === false AND $searchagain) return $this->getItem($name, $language, (($region=='eu') ? 'www' : 'eu'), false);
+        if (strpos($xml_search_data,'<items>') === false AND $searchagain) return $this->getItem($name, $language, (($region=='kr') ? 'www' : 'kr'), false);
 
         $xml_search_data=substr($xml_search_data,strpos($xml_search_data,'<items>'));
         $xml_search_data=substr($xml_search_data,0,strpos($xml_search_data,'</items>')+8);
@@ -166,9 +169,10 @@ class ParseArmory
 			if ($category['name'] == 'ITEM')
 			{
 				$items_idx = $i;
-				if(strtolower($category['attr']['NAME']) == strtolower(utf8_encode($fixed_name)))
+				if(strtolower($category['attr']['NAME']) == strtolower(mb_convert_encoding($fixed_name,"UTF-8","EUC-KR")))
 				                                         break;
 			}
+
 			$i++;
 		}
 
@@ -179,8 +183,8 @@ class ParseArmory
 			$item_id = -1;
 
             $item_id = $found_item['attr']['ID'];
-			$found_name = str_replace(chr(160),' ',$found_item['attr']['NAME']);
-
+//			$found_name = str_replace(chr(160),' ',$found_item['attr']['NAME']);
+			$found_name = $found_item['attr']['NAME'];
 			if ($item_id != -1)
 			{
 				// we found the item in the results, retrieve the item data using its item id
@@ -192,8 +196,10 @@ class ParseArmory
 		return $item;
 	}
 
+
+
 	// Attempts to retrieve data for the specified item from Wowhead by its wowhead itemid
-	function getItemIvar_dump($item_id, $name = '',$language='fr')
+	function getItemIvar_dump($item_id, $name = '',$language='kr')
 	{
 		global $lang;
 		$item = array('id' => $item_id);
@@ -239,17 +245,24 @@ class ParseArmory
 		}
 		if (debug_mode == true)
 		{
+echo "<br><b>디버그 모드 위치 B!</b><br>";
                     echo "Search on the Armory site : language ".$lang."<br/>";
 		}
 
         $properties = $this->splitProperties($item_data[0]['child'][0]['child'][0]['child']);
 
-		if (debug_mode == true) var_dump($properties);
+		if (debug_mode == true) 
+		{
+echo "<br><b>디버그 모드 위치 C!</b><br>";
+		  var_dump($properties);
+		
+		}
 
 		// set item data
 		if ($name != '')
 		{
 			$item['name'] = $name;
+
 		} else
 		{
 			$item['name'] = $properties['NAME']['data'];
@@ -459,21 +472,37 @@ class ParseArmory
         $properties['HTMLTOOLTIP']['data'] .="</td></tr></table>";
         $properties['HTMLTOOLTIP']['data'] .="<table><tr><td>";
 
-		$caracs = array("BONUSDEFENSESKILLRATING" => "increase-defense",
-		"INCREASEDODGE"=>"increase-dodge","BONUSPARRYRATING"=>"bonusParryRating",
-		"BONUSDODGERATING" =>"increase-dodge",
-		"BONUSBLOCKRATING" => "bonusBlockRating", "BONUSCRITSPELLRATING"=>"improve-spell-crit",
-		"BONUSHITSPELLRATING" => "improve-spell","BONUSCRITRATING"=>"improve-crit-strike","BONUSHITRATING"=>"improve-hit-rating",
-		"BONUSHITTAKENRATING"=>"bonusHitTakenRating","BONUSCRITTAKENRATING"=>"bonusCritTakenRating",
-		"BONUSRESILIENCE"=>"improve-resilience","BONUSHASTERATING"=>"bonusHasteRating",
-                "BONUSHASTESPELLRATING" =>"bonusHasteSpellRating");
+		$caracs = array(
+		"BONUSDEFENSESKILLRATING" => "increase-defense", //방어숙련도
+		"INCREASEDODGE"=>"increase-dodge", //회피숙련도
+		"BONUSPARRYRATING"=>"bonusParryRating", //무기막기숙련도
+		"BONUSDODGERATING" =>"increase-dodge", // -구버전
+		"BONUSBLOCKRATING" => "bonusBlockRating", //방패막기숙련도
+		"BONUSCRITSPELLRATING"=>"improve-spell-crit", // 주문 극대화 적중도 - 구버전
+		"BONUSHITSPELLRATING" => "improve-spell", // 주문 적중도 -구버전
+		"BONUSCRITRATING"=>"improve-crit-strike", // 치명타 적중도
+		"BONUSHITRATING"=>"improve-hit-rating", // 적중도
+		"BONUSHITTAKENRATING"=>"bonusHitTakenRating", // 공격 회피 숙련도
+		"BONUSCRITTAKENRATING"=>"bonusCritTakenRating", // 치명타 적중도
+		"BONUSRESILIENCE"=>"improve-resilience", // 탄력도
+		"BONUSHASTERATING"=>"bonusHasteRating", // 공격 가속도
+    "BONUSHASTESPELLRATING" =>"bonusHasteSpellRating", // 주문 공격 가속도 - 구버전
+    "BONUSSPELLPOWER" =>"bonusSpellPower", // 주문력
+    "BONUSARMORPENETRATION" => "bonusArmorPenetration", // 방어구 관통력
+    "BONUSATTACKPOWER" => "bonusAttackPower", // 전투력
+    "BONUSEXPERTISERATING" => "bonusExpertiseRating", // 숙련도
+    "BONUSRANGEDATTACKPOWER" => "bonusRangedAttackPower", // 원거리 전투력
+    "BONUSMANAREGEN" => "bonusManaRegen", // 마나 회복량
+    
+    );
+
 
         foreach ($caracs as $k => $c)
         {
 			$k = strtoupper($k);
 			if ($properties[$k])
 			{
-			   $properties['HTMLTOOLTIP']['data'] .= "<span class=\"q2\">".$tooltip[$c]." ".$properties[$k]['data']."</span><br/>";
+			   $properties['HTMLTOOLTIP']['data'] .= "<span class=\"q2\">".$tooltip[$c]." ".$properties[$k]['data'].mb_convert_encoding('만큼 증가합니다.',"UTF-8","EUC-KR")."</span><br/>";
             }
 		}
 
@@ -532,7 +561,11 @@ class ParseArmory
           $properties['HTMLTOOLTIP']['data'] .= "<br/>";
         }
 
-        if (debug_mode == true) d($properties['ITEMSOURCE']);
+        if (debug_mode == true) 
+        {
+echo "<br><b>디버그 모드 위치 D!</b><br>";          
+        d($properties['ITEMSOURCE']);
+        }
         if ($properties['ITEMSOURCE'])
         {
 
@@ -545,16 +578,16 @@ class ParseArmory
 			$_lang['is_reput']	    				= 'Rep. Reward';
 			$_lang['is_world']	    				= 'WorldDrop';
 
-        	if($language=='de')
+        	if($language=='kr')
         	{
-				$_lang['is_from']    					= 'Quelle';
-				$_lang['is_vendor']    					= 'H&auml;ndler';
-				$_lang['is_Boss']    					= 'Boss';
-				$_lang['is_Droprate']    				= 'Droprate';
-				$_lang['is_crafted']    				= 'Hergestellt';
-				$_lang['is_pvp']    					= 'PVP-Belohnung';
-				$_lang['is_world']	    				= 'WorldDrop';
-				$_lang['is_reput']	    				= 'Rufbelohnung';
+				$_lang['is_from']    					= mb_convert_encoding('획득처',"UTF-8","EUC-KR");
+				$_lang['is_vendor']    					= mb_convert_encoding('상점',"UTF-8","EUC-KR");
+				$_lang['is_Boss']    					= mb_convert_encoding('보스',"UTF-8","EUC-KR");
+				$_lang['is_Droprate']    				= mb_convert_encoding('획득률',"UTF-8","EUC-KR");
+				$_lang['is_crafted']    				= mb_convert_encoding('제작',"UTF-8","EUC-KR");
+				$_lang['is_pvp']    					= mb_convert_encoding('PVP보상',"UTF-8","EUC-KR");
+				$_lang['is_world']	    				= mb_convert_encoding('월드드랍',"UTF-8","EUC-KR");
+				$_lang['is_reput']	    				= mb_convert_encoding('평판',"UTF-8","EUC-KR");
         	}
 
         	$from = str_replace('sourceType.','',$properties['ITEMSOURCE']['attr']['VALUE']) ;
@@ -563,14 +596,14 @@ class ParseArmory
         	{
         		if ($properties['ITEMSOURCE']['attr']['AREANAME'])
         		{
-        			$from_link = "http://".$this->url_prefix.".wowarmory.com/search.xml?fl%5Bsource%5D=dungeon&fl%5Bdungeon%5D=".$properties['ITEMSOURCE']['attr']['AREAID']."&fl%5Bboss%5D=all&fl%5Bdifficulty%5D=normal&fl%5Btype%5D=all&fl%5BusbleBy%5D=all&fl%5BrqrMin%5D=&fl%5BrqrMax%5D=&fl%5Brrt%5D=all&advOptName=none&fl%5Bandor%5D=and&searchType=items&fl%5BadvOpt%5D=none";
+        			$from_link = "http://".$this->urlprefix.".wowarmory.com/search.xml?fl%5Bsource%5D=dungeon&fl%5Bdungeon%5D=".$properties['ITEMSOURCE']['attr']['AREAID']."&fl%5Bboss%5D=all&fl%5Bdifficulty%5D=normal&fl%5Btype%5D=all&fl%5BusbleBy%5D=all&fl%5BrqrMin%5D=&fl%5BrqrMax%5D=&fl%5Brrt%5D=all&advOptName=none&fl%5Bandor%5D=and&searchType=items&fl%5BadvOpt%5D=none";
         			$properties['HTMLTOOLTIP']['data'] .= "<br/><span class=\"q\">".$_lang['is_from'].": </span> <a href=".$from_link." target=_blank>" . $properties['ITEMSOURCE']['attr']['AREANAME']."</a>" ;
         		}
 
 
         		if ($properties['ITEMSOURCE']['attr']['CREATURENAME'])
         		{
-        		    $link = "<a href=http://".$this->url->prefix.".wowarmory.com/search.xml?searchType=items&fl[source]=dungeon&fl[difficulty]=normal&fl[boss]=".$properties['ITEMSOURCE']['attr']['CREATUREID']."
+        		    $link = "<a href=http://".$this->urlprefix.".wowarmory.com/search.xml?searchType=items&fl[source]=dungeon&fl[difficulty]=normal&fl[boss]=".$properties['ITEMSOURCE']['attr']['CREATUREID']."
         					 target=_blank >".$properties['ITEMSOURCE']['attr']['CREATURENAME']."</a>";
         			$properties['HTMLTOOLTIP']['data'] .= "<br/><span class=\"q\">".$_lang['is_Boss'].": </span>" . $link ;
         		}
@@ -618,9 +651,9 @@ class ParseArmory
 		         $info_data = $this->xml_parser->parse($xml_item_data);
 		         if (sizeof($info_data) != 0)
 		         {
-		           if (debug_mode) d($info_data);
+		           if (debug_mode) {echo "<br><b>디버그 모드 위치 E!</b><br>";d($info_data);}
 		           $properties2 = $this->splitProperties($info_data[0]['child'][0]['child'][0]['child']);
-		           if (debug_mode) d($properties2);
+		           if (debug_mode) {echo "<br><b>디버그 모드 위치 F!</b><br>";d($properties2);}
 		           $reagents = array();
 		           if ($properties2['CREATEDBY_SPELL0_REAGENT'])
 		           {
@@ -631,7 +664,7 @@ class ParseArmory
 		                $reagents[] = $properties2['CREATEDBY_SPELL0_REAGENT'.$i]['attr'];
 		                $i++;
 		             }
-		             if (debug_mode) var_dump($reagents);
+		             if (debug_mode) {echo "<br><b>디버그 모드 위치 F!</b><br>";var_dump($reagents);}
 		           }
 
 		           if (sizeof($reagents) >0)
@@ -666,9 +699,12 @@ class ParseArmory
 
 		if (debug_mode)
 		{
-            var_dump(strpos($xml_item_data,"<itemTooltip>"+13));
+echo "<br><b>디버그 모드 위치 G!</b><br>";
+      var_dump(strpos($xml_item_data,"<itemTooltip>"+13));
+echo "<br><br>";
 			var_dump($item);
-		    var_dump($properties);
+echo "<br><br>";
+      var_dump($properties);
 		}
 
 		// create the tooltip html
@@ -696,19 +732,19 @@ class ParseArmory
 
 		foreach (array_keys($item) as $key)
 		{
-		  $item[$key] = utf8_decode($item[$key]);
+		  $item[$key] = mb_convert_encoding($item[$key],"EUC-KR","UTF-8");
 		  if (DECODE_UTF8 == true)
 		  {
-		  	$item[$key] = utf8_decode($item[$key]);
+		  	$item[$key] = mb_convert_encoding($item[$key],"EUC-KR","UTF-8");
            }
         }
 
         if (DECODE_UTF8 == true)
         {
-           $item['name'] = utf8_decode($item['name']);
+           $item['name'] = mb_convert_encoding($item['name'],"EUC-KR","UTF-8");
         }
 
-        $item['name'] = str_replace(chr(160),' ',$item['name']);
+//        $item['name'] = str_replace(chr(160),' ',$item['name']);
 
 		return $item;
 	}
@@ -746,11 +782,12 @@ class ParseArmory
 
 		if (debug_mode == true)
 		{
+echo "<br><b>디버그 모드 위치 H!</b><br>";
         	echo "Search on the Armory site : " . $item_id." in the ".$language." language<br/>";
         }
         if(sizeof($item_data) == 0 AND $searchagain)
         {
-        	return $this->get_itemdata($item_id, $language, (($region=='eu') ? 'www' : 'eu'), false);
+        	return $this->get_itemdata($item_id, $language, (($region=='kr') ? 'www' : 'kr'), false);
         }
         return $item_data;
     }
@@ -762,7 +799,7 @@ class ParseArmory
 		$lang_data = $this->xml_parser->parse($xml_lang_data);
 		if(sizeof($lang_data) == 0 AND $searchagain)
 		{
-			return $this->get_item_langdata($lang, $language, (($region=='eu') ? 'www' : 'eu'), false);
+			return $this->get_item_langdata($lang, $language, (($region=='kr') ? 'www' : 'kr'), false);
 		}
 		$lang_data=$lang_data[0]["child"];
 		return $lang_data;

@@ -96,18 +96,18 @@ function renameRacetoenglish($class)
 			case "Elfe de la nuit"  : $_return = "Night Elf";break;
 			case "Elfe de sang"  	: $_return = "Blood Elf";break;
 			case "Mort-vivant"  	: $_return = "Undead";break;
-			case "Draeneï"  		: $_return = "Draenei";break;
+			case "Draene?  		: $_return = "Draenei";break;
 			
-			case "Ãíîì"       	: $_return = "Gnome";break;
-			case "×åëîâåê" 		: $_return = "Human";break;
-			case "Äâàðô"        : $_return = "Dwarf";break;
-			case "Íî÷íîé ýëüô"  : $_return = "Night Elf";break;
-			case "Òðîëü"       	: $_return = "Troll";break;
-			case "Íåæèòü"       : $_return = "Undead";break;
-			case "Îðê"     		: $_return = "Orc";break;
-			case "Òàóðåí"      	: $_return = "Tauren";break;
-			case "Äðåíåé"     	: $_return = "Draenei";break;
-			case "Êðîâàâûé ýëüô": $_return = "Blood Elf";break;			
+			case "ì·°ä½ƒ"       	: $_return = "Gnome";break;
+			case "ç—¢ä¾æ©“? 		: $_return = "Human";break;
+			case "ì½°ç‡®?        : $_return = "Dwarf";break;
+			case "å­”æ·è¿¹ å‡žæ©«"  : $_return = "Night Elf";break;
+			case "ï¥’é‘?       	: $_return = "Troll";break;
+			case "è¢žï¦›æ½—"       : $_return = "Undead";break;
+			case "è•Ž?     		: $_return = "Orc";break;
+			case "è…¦å‚µå­¼"      	: $_return = "Tauren";break;
+			case "ì¿¨å­¼å½¦"     	: $_return = "Draenei";break;
+			case "æ†¾è»è¨­æ¸¾ å‡žæ©«": $_return = "Blood Elf";break;			
 		 }
 	}
 	elseif ($eqdkp->config['default_game'] == 'LOTRO') {
@@ -270,7 +270,7 @@ function get_ClassIcon($class="",$classID=-1, $big=false)
 } // end function
 
 /**
- * Gibt NUR das Klassenicon mit Link auf Listmembers?filter=class zurück
+ * Gibt NUR das Klassenicon mit Link auf Listmembers?filter=class zur?k
  * uses in Listmembers.php
  *
  * @param string $class
@@ -494,10 +494,10 @@ function get_wow_talent_spec($class, $skill1, $skill2, $skill3, $member, $last_u
 	 if ( ($skill1 < 40) and ($skill2 < 40) and ($skill3 < 40)  )
 	 {$spec =	$user->lang['Hybrid'] ;}
 
-	 //USA or Europe Server for the Amory Link
-	 if($conf_plus['pk_server_region'] =="eu")
+	 //USA or KR Server for the Amory Link
+	 if($conf_plus['pk_server_region'] =="kr")
 	 {
-		$armoryurl = "http://armory.wow-europe.com";
+		$armoryurl = "http://kr.wowarmory.com";
 	 }else{
 		$armoryurl = "http://armory.worldofwarcraft.com";
 	 }
@@ -539,7 +539,7 @@ function get_wow_talent_spec($class, $skill1, $skill2, $skill3, $member, $last_u
 	 	$ret_val['spec'] = $spec;
 	 }
 
-	 //und ab dafür :D
+	 //und ab daf? :D
 	 return $ret_val ;
 }
 

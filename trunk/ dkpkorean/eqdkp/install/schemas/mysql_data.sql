@@ -1,7 +1,7 @@
 ### Configuration values
-INSERT INTO eqdkp_config (config_name, config_value) VALUES ('default_lang', 'english');
+INSERT INTO eqdkp_config (config_name, config_value) VALUES ('default_lang', 'Korean');
 INSERT INTO eqdkp_config (config_name, config_value) VALUES ('default_game', 'WoW');
-INSERT INTO eqdkp_config (config_name, config_value) VALUES ('game_language', 'de');
+INSERT INTO eqdkp_config (config_name, config_value) VALUES ('game_language', 'kr');
 INSERT INTO eqdkp_config (config_name, config_value) VALUES ('default_style', '36');
 INSERT INTO eqdkp_config (config_name, config_value) VALUES ('default_alimit', '100');
 INSERT INTO eqdkp_config (config_name, config_value) VALUES ('default_elimit', '100');
@@ -31,7 +31,7 @@ INSERT INTO eqdkp_config (config_name, config_value) VALUES ('enable_gzip', '0')
 INSERT INTO eqdkp_config (config_name, config_value) VALUES ('admin_email', '');
 INSERT INTO eqdkp_config (config_name, config_value) VALUES ('account_activation', '1');
 INSERT INTO eqdkp_config (config_name, config_value) VALUES ('eqdkp_start', UNIX_TIMESTAMP());
-INSERT INTO eqdkp_config (config_name, config_value) VALUES ('default_locale', 'en_US');
+INSERT INTO eqdkp_config (config_name, config_value) VALUES ('default_locale', 'ko_KR');
 INSERT INTO eqdkp_config (config_name, config_value) VALUES ('plus_version', '0.6.2.5');
 INSERT INTO eqdkp_config (config_name, config_value) VALUES ('default_game_overwrite', '0');
 

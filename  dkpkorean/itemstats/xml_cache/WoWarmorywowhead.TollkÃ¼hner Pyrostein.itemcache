@@ -1,0 +1,16 @@
+a:7:{s:9:"item_name";s:20:"Tollkühner Pyrostein";s:7:"item_id";s:5:"35760";s:9:"item_lang";s:2:"de";s:9:"item_link";s:45:"http://eu.wowarmory.com/item-info.xml?i=35760";s:10:"item_color";s:10:"purplename";s:9:"item_icon";s:30:"inv_jewelcrafting_pyrestone_02";s:9:"item_html";s:843:"<table class='wh_outer'>
+	<tr>
+		<td valign='top'>
+			<div class='iconmedium' style='background-image: url({ITEM_ICON_LINK});'><div class='tile'></div></div>
+		</td>
+		<td width='300'>
+			<table class='wowhead_tooltip'>
+			<tr><td class='top-left'></td><td class='top-right'></td></tr>
+			<tr><td colspan='2' class='wh_left'>
+				<div class='wh_right'><div class='wowhead_tooltip'><table><tr><td><b class='q4'><a href='http://eu.wowarmory.com/item-info.xml?i=35760' target='_new'>Tollkühner Pyrostein</a></b><br/>Benötigt Stufe -1<br/>+5 Tempowertung und +6 Zaubermacht<br/></td></tr></table><table><tr><td><span class='q'>'Am besten für einen roten oder gelben Sockel geeignet.'</span><br/></td></tr></table></div></div>
+			</td></tr>
+			<tr><td class='bottom-left'></td><td class='bottom-right'></td></tr>
+			</table>
+		</td>
+	</tr>
+</table>";}

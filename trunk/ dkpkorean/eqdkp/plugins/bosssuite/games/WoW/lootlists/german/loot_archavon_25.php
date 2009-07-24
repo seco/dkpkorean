@@ -1,4 +1,0 @@
-<?php
-$loot = array(
-);
-?>

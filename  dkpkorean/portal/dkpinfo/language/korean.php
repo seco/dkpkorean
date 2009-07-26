@@ -21,7 +21,7 @@ if ( !defined('EQDKP_INC') ){
 }
 
 $plang = array_merge($plang, array(
-  'dkpinfo'               => '점수 정보',
+  'dkpinfo'               => '공격대 정보',
   'portal_info_raids'     => '레이드 횟수',
   'portal_info_player'    => '플레이어',
   'portal_info_items'     => '아이템',

@@ -3,7 +3,7 @@ if ($this->security()) {
 echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=' . ((isset($this->_tpldata['.'][0]['L_CHARSET'])) ? $this->_tpldata['.'][0]['L_CHARSET'] : ((isset($user->lang['CHARSET'])) ? $user->lang['CHARSET'] : '{ ' . ucfirst(strtolower(str_replace('_', ' ', 'CHARSET'))) . ' 	}')) . '" />
 
 <title>' . ((isset($this->_tpldata['.'][0]['L_HEADER'])) ? $this->_tpldata['.'][0]['L_HEADER'] : ((isset($user->lang['HEADER'])) ? $user->lang['HEADER'] : '{ ' . ucfirst(strtolower(str_replace('_', ' ', 'HEADER'))) . ' 	}')) . ' - ' . ((isset($this->_tpldata['.'][0]['L_STEP'])) ? $this->_tpldata['.'][0]['L_STEP'] : ((isset($user->lang['STEP'])) ? $user->lang['STEP'] : '{ ' . ucfirst(strtolower(str_replace('_', ' ', 'STEP'))) . ' 	}')) . ' ' . ((isset($this->_tpldata['.'][0]['INSTALL_STEP'])) ? $this->_tpldata['.'][0]['INSTALL_STEP'] : '') . '</title>
 <style type="text/css">

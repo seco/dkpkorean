@@ -517,7 +517,19 @@ $lang['login_bridge_notice'] = "로그인 - CMS-Bridge 활성화. 당신의 CSM/Board Dat
 $lang['ads_remove'] = "EQdkp-Plus 지원";
 $lang['ads_header'] = "EQDKP-Plus 지원";
 $lang['ads_text'] = " ";
-$lang['talents'] = "array('성기사' => array('신성','보호','징벌'),'도적' => array('암살','전투','잠행'),'전사' => array('무기','분노','방어'),'사냥꾼' => array('야수','사격','생존'),'사제' => array('수양','신성','암흑'),'흑마법사' => array('고통','악마','파괴'),'드루이드' => array('조화','야성','회복'),'마법사' => array('비전','화염','냉기'),'주술사' => array('정기','고양','복원'),'죽음의 기사' => array('혈기','냉기','부정'))";
+//$lang['talents'] = "array('성기사' => array('신성','보호','징벌'),'도적' => array('암살','전투','잠행'),'전사' => array('무기','분노','방어'),'사냥꾼' => array('야수','사격','생존'),'사제' => array('수양','신성','암흑'),'흑마법사' => array('고통','악마','파괴'),'드루이드' => array('조화','야성','회복'),'마법사' => array('비전','화염','냉기'),'주술사' => array('정기','고양','복원'),'죽음의 기사' => array('혈기','냉기','부정'))";
+$lang['talents'] = array(
+'Paladin'   	=> array('Holy','Protection','Retribution'),
+'Rogue'     	=> array('Assassination','Combat','Subtlety'),
+'Warrior'   	=> array('Arms','Fury','Protection'),
+'Hunter'    	=> array('Beast Mastery','Marksmanship','Survival'),
+'Priest'    	=> array('Discipline','Holy','Shadow'),
+'Warlock'  		=> array('Affliction','Demonology','Destruction'),
+'Druid'     	=> array('Balance','Feral Combat','Restoration'),
+'Mage'      	=> array('Arcane','Fire','Frost'),
+'Shaman'    	=> array('Elemental','Enhancement','Restoration'),
+'Death Knight'   => array('Blood','Frost','Unholy')
+);
 $lang['portalmanager'] = "포탈모듈 관리";
 $lang['air_img_resize_warning'] = "원본사이즈를 보려면 클릭하세요. 원본 크기 : %1$sx%2$s.";
 $lang['guild_shop'] = "상점";

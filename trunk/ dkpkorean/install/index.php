@@ -316,7 +316,7 @@ $LOCALES = array(
 		'type'	=> 'ru_RU'
 		),
   'Korean' => array(
-		'label'	=> 'Koreané',
+		'label'	=> 'Korean',
 		'type'	=> 'ko_KR'
 		),
 		

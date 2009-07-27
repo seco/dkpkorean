@@ -36,7 +36,8 @@ $tabs = new Tabs();
 $itemstats_language = array(
 	'german'							=> $plang['pk_german'],
 	'english'							=> $plang['pk_english'],
-	'french'							=> $plang['pk_french']
+	'french'							=> $plang['pk_french'],
+	'korean'              => $plang['pk_korean'],
 );
 
 // Build the Dropdown Arrays:
@@ -63,16 +64,19 @@ $a_itemstats_site= array(
 	'wowhead'          => "wowhead",
 	'thottbot'         => "thottbot",
 	'judgehype'        => "judgehype",
-	'wowdbu'           => "wowdbu"
+	'wowdbu'           => "wowdbu",
+	'inven'            => "inven",
 );
 
 	//Databases for Itemsearch
 $a_itemstats_kombis= array(
 	'armory_wowhead'   => "Armory & WoWHead",	
 	'wowhead_armory'   => "WoWHead & Armory",
-	'armory'   		   => "armory",
-	'wowhead'   	   => "wowhead",
-	'buffed'           => "buffed"	
+	'armory'    		   => "armory",
+	'wowhead'     	   => "wowhead",
+	'buffed'           => "buffed"	,
+	'inven'            => "Inven(KR)",
+	'armory_inven'     => "Armory & Inven",
 );
 
 //Itemstats allakhazam Language
@@ -93,6 +97,7 @@ $a_Item_default_language= array(
 	'en'						=> "en",
 	'de'						=> "de",
 	'fr'						=> "fr",
+	'kr'            => "kr",
 );
 
 //Item default language
@@ -122,7 +127,8 @@ $a_rss_style = array(
 
 $a_rss_lang = array(
 	'de'				=> $plang['pk_set_Show_rss_lang_de'],
-	'eng'				=> $plang['pk_set_Show_rss_lang_eng']
+	'eng'				=> $plang['pk_set_Show_rss_lang_eng'],
+	'kr'				=> $plang['pk_set_Show_rss_lang_kr'],
 
 );
 
@@ -355,6 +361,7 @@ if ($_POST['save_plus']){
    {
 		include_once('include/wow/server_eu.php');
 		include_once('include/wow/server_us.php');
+  	include_once('include/wow/server_kr.php');
 
 		//Autocomplete
 

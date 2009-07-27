@@ -182,8 +182,8 @@ class ItemCache
 		// Add the entry to the database.
 		$sql = "INSERT INTO " . item_cache_table . " VALUES (" .
 								 "'" . addslashes($item['name']) . "', " .
-                                 "'" . addslashes($item['id']) . "', " .
-                                 "'" . addslashes($item['lang']) . "', " .
+                                 //"'" . addslashes($item['id']) . "', " .
+                                 //"'" . addslashes($item['lang']) . "', " .
 								 (empty($item['link']) ? 'NULL' : "'" . addslashes($item['link']) . "'") . ", " .
 								 "'" . addslashes($item['color']) . "', " .
 								 "'" . addslashes($item['icon']) . "', " .
@@ -215,7 +215,7 @@ class ItemCache
     	{
     		$errorfile = '/../templates/popup-error_blasc.tpl';
     	}
-        // Objet non trouvé, on renvoi un objet gris et une erreur :)
+        // Objet non trouv? on renvoi un objet gris et une erreur :)
         $item['name'] = $name;
         $item['id'] = '0';
         $item['lang'] = 'na';
@@ -239,7 +239,7 @@ class ItemCache
         
         $search_name = $this->webDB.'.'.utf8_encode($name).".itemcache";        
 
-        // On fait attention aux failles de sécurité
+        // On fait attention aux failles de s?urit?
         $search_name = str_replace("..", ".", $search_name);
         $search_name = str_replace("/", "", $search_name);
         $search_name = str_replace("\\", "", $search_name);
@@ -267,7 +267,7 @@ class ItemCache
 	            if (debug_mode == true)
 	                echo "Object found !<br/><br/>";
 	
-	            	//echo "Fichier cache trouvé !<br/>";
+	            	//echo "Fichier cache trouv?!<br/>";
 	                   $item = file_get_contents($file);                  
 	                   if (!$item)
 	                      return false;

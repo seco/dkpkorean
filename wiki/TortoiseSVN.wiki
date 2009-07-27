@@ -1,0 +1,8 @@
+#.svn빼고 코드만 가져오기
+
+= TortoiseSVN으로 .svn빼고 코드파일 얻는 법 =
+
+이미 아시겠지만,혹시나 하는 마음과 또 같이 참여하실 분들을 위한 Knowledge Base
+TortoiseSVN > Export 클릭하신 후,
+폴더 지정해주시면 현재 작업 중인 코드가 .svn폴더를 빼고 카피됩니다.
+

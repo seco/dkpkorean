@@ -25,6 +25,7 @@ if(strtolower($eqdkp->config['default_game']) == 'wow')
 	include_once(dirname(__FILE__) . '/includes/blasc.php');
 	include_once(dirname(__FILE__) . '/includes/wowhead.php');
 	include_once(dirname(__FILE__) . '/includes/armory.php');
+  include_once(dirname(__FILE__) . '/includes/inven.php');
 }
 elseif (strtolower($eqdkp->config['default_game']) == 'lotro')
 {
@@ -208,6 +209,7 @@ class ItemStats
     var $info_site_wowdbu;
     var $info_site_blasc;
     var $info_site_wowhead;
+    var $info_site_inven;
 
     // Constructor
 	function ItemStats($bNewConnection = false, $openConnection = 0)
@@ -271,6 +273,7 @@ class ItemStats
 	        $this->info_site_blasc = new ParseBlasc();
 			$this->info_site_wowhead = new ParseWowhead();
 			$this->info_site_armory = new ParseArmory();
+			$this->info_site_inven = new ParseInven();
 		}
 		elseif (strtolower($eqdkp->config['default_game']) == 'lotro')
 		{
@@ -303,6 +306,7 @@ class ItemStats
 		        $this->info_site_blasc->close();
 				$this->info_site_wowhead->close();
 				$this->info_site_armory->close();
+				$this->info_site_inven->close();
 			}
 			elseif (strtolower($eqdkp->config['default_game']) == 'lotro')
 			{
@@ -687,7 +691,11 @@ class ItemStats
         //=============== DEBUT XML_CACHE =============================================================
         // On vérifie qu'il y a pas un fichier dans xml_cache
         // POUR LA RECHERCHE DE FICHIER CACHE, il faut encodé le nom en UTF8 sinon la recherche est mauvaise quand le nom comporte des accents.
-        $search_name = utf8_encode($name);
+        if ($language == 'kr'){
+          $search_name = mb_convert_encoding($name,"UTF-8","EUC-KR");
+        }else{
+          $search_name = utf8_encode($name);
+        }
         // On fait attention aux failles de sécurité
         $search_name = str_replace("..", ".", $search_name);
         $search_name = str_replace("/", "", $search_name);
@@ -762,8 +770,10 @@ class ItemStats
                     $item = $this->info_site_blasc->getItem($name);
                 else if ($GLOBALS["prio"][$ct] == 'buffed')
                     $item = $this->info_site_blasc->getItem($name);
-				else if ($GLOBALS["prio"][$ct] == 'wowhead')
-		    		$item = $this->info_site_wowhead->getItem($name);
+        				else if ($GLOBALS["prio"][$ct] == 'wowhead')
+        		    		$item = $this->info_site_wowhead->getItem($name);
+        				else if ($GLOBALS["prio"][$ct] == 'inven')
+        		    		$item = $this->info_site_inven->getItem($name);
                 else if ($GLOBALS["prio"][$ct] == 'armory')
                 {
 	                for ($lg = 0; isset($GLOBALS["armory_lang"][$lg]); $lg++)
@@ -847,8 +857,10 @@ class ItemStats
                 $item = $this->info_site_blasc->getItemId($id);
             else if ($GLOBALS["prio"][$ct] == 'buffed')
                 $item = $this->info_site_blasc->getItemId($id);
-	    else if ($GLOBALS["prio"][$ct] == 'wowhead')
+      	    else if ($GLOBALS["prio"][$ct] == 'wowhead')
                 $item = $this->info_site_wowhead->getItemId($id);
+      	    else if ($GLOBALS["prio"][$ct] == 'inven')
+                $item = $this->info_site_inven->getItemId($id);
             else if ($GLOBALS["prio"][$ct] == 'armory')
                 $item = $this->info_site_armory->getItemId($id,$lang);
             if (!empty($item['link']))

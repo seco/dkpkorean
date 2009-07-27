@@ -191,6 +191,24 @@ class Template_Wrap extends Template
             )
         );
 
+
+// For Korean Charset of install_header.html (templete)
+
+        if ( $lang['default_lang'] == 'Korean' )
+        {
+            $this->assign_vars(array(
+              'L_CHARSET'    => 'EUC-KR',
+              )
+            );
+        }
+        else
+        {
+            $this->assign_vars(array(
+              'L_CHARSET'    => 'ISO-8859-1',
+              )
+            );
+        }
+
         $stepname = array(
           1 => $lang['stepname_1'],
           2 => $lang['stepname_2'],
@@ -296,7 +314,12 @@ $LOCALES = array(
   'Russian' => array(
 		'label'	=> 'Ðóññêèé',
 		'type'	=> 'ru_RU'
-		)
+		),
+  'Korean' => array(
+		'label'	=> 'Koreané',
+		'type'	=> 'ko_KR'
+		),
+		
 		
 	);
 
@@ -765,7 +788,8 @@ function process_step4()
     $glanguagearray = array(
                         'ru'  => 'Russian',
                         'en'  => 'English',
-                        'de'  => 'German'
+                        'de'  => 'German',
+                        'kr'  => 'Korean',
                         );
     foreach ( $glanguagearray as $gamelang=>$glangname){
       $tpl->assign_block_vars('gamelang_row', array(

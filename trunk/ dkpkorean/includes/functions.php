@@ -553,7 +553,7 @@ function redirect($url, $return = false, $extern=false)
         echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">';
         echo '<html>';
         echo '<head>';
-        echo '<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">';
+        echo '<meta http-equiv="Content-Type" content="text/html" charset='.$lang['ENCODING'].'>';
         echo '<meta http-equiv="refresh" content="0; url=' . str_replace('&', '&amp;', $location) .'">';
         echo '<title>Redirect</title>';
         echo '</head>';

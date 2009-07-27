@@ -243,12 +243,12 @@ class EQdkp
             @header('Cache-Control: no-store, no-cache, must-revalidate');
             @header('Cache-Control: post-check=0, pre-check=0', false);
             @header('Pragma: no-cache');
-            @header('Content-Type: text/html; charset=iso-8859-1');
+            @header('Content-Type: text/html; charset='.$lang['ENCODING']);
         }
         else
         {
             @header('Last-Modified: ' . $now);
-            @header('Content-Type: text/html; charset=iso-8859-1');
+            @header('Content-Type: text/html; charset='.$lang['ENCODING']);
         }
       }
 		// Additions for PLUS

@@ -1,0 +1,33 @@
+ Datentr„ger in Laufwerk R: ist Raid
+ Volumeseriennummer: 9086-2A69
+
+ Verzeichnis von r:\Projekte\EQDKP Plus\svn\0.6_late_night\portal
+
+14.05.2009  17:42    <DIR>          .
+14.05.2009  17:42    <DIR>          ..
+14.05.2009  17:42                 0 1.txt
+29.03.2009  16:49    <DIR>          advertising
+07.04.2009  10:33    <DIR>          birthday
+18.03.2009  17:00    <DIR>          bossguides
+06.05.2009  01:16    <DIR>          counter
+29.03.2009  16:49    <DIR>          dkpinfo
+13.04.2009  22:50             4.016 externals.svn
+29.03.2009  16:50    <DIR>          lastitems
+29.03.2009  16:50    <DIR>          lastraids
+25.02.2009  22:06    <DIR>          latestposts
+04.05.2009  01:56    <DIR>          membermap
+02.02.2009  23:42    <DIR>          mycontent
+29.03.2009  16:50    <DIR>          quickdkp
+29.03.2009  16:50    <DIR>          quicklogin
+18.03.2009  17:04    <DIR>          quicksearch
+29.03.2009  16:50    <DIR>          rankimage
+29.03.2009  16:50    <DIR>          realmstatus
+15.03.2009  23:25    <DIR>          recruitment
+16.03.2009  13:02    <DIR>          rsslinks
+15.03.2009  18:56    <DIR>          teamspeak
+02.02.2009  23:43    <DIR>          ventrilo
+11.05.2009  01:06    <DIR>          weather
+29.03.2009  16:50    <DIR>          whoisonline
+06.05.2009  01:31    <DIR>          wowprogress
+               2 Datei(en),          4.016 Bytes
+              24 Verzeichnis(se), 670.502.412.288 Bytes frei

@@ -1,0 +1,83 @@
+<!-- IF NL_SEND -->
+<table width="100%" border="0" cellspacing="1" cellpadding="2">
+  <tr>
+    <th align="center" colspan="2">{L_HEADER_EMAIL_SENT}</th>
+  </tr>
+  <tr>
+    <td class="row1" width ="48px"><img src="../images/ok.png" /></td>
+    <td class="row1">
+    	{L_TEXT_EMAIL_SENT}<br/>
+    		<!-- BEGIN members_row -->
+    		<b>{members_row.NAME}</b><br/>
+    		<!-- END members_row -->
+    </td>
+  </tr>
+  <tr>
+</table>
+<!-- ELSE -->
+{EDITOR_INIT}
+<table width="100%" border="0" cellspacing="1" cellpadding="2">
+<form method="get" action="{F_ACTION}" name="post">
+<tr>
+  	<th colspan align="left">{L_SELECT_TEMPL} {DRPDWN_TEMPLATE}</th>
+</tr>
+</form>
+</table>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="2">
+  <form method="post" action="{F_ACTION}" name="post">
+  	<tr>
+  	<th colspan=2>{L_HEADER_NEWSLETTER}</th>
+  </tr>
+  	<tr class='row1'>
+		<td>{L_RECEPIENTS}</td>
+  <!-- IF RP_BRIDGE -->
+		<td>
+			<input type="hidden" name="rp_bridge" value="enabled">
+			<!-- BEGIN receive_row -->
+			<input type="hidden" name="usernames[{receive_row.NAME}]" value="{receive_row.EMAIL}">{receive_row.NAME},
+    		<!-- END receive_row --></td>
+	<!-- ELSE -->
+		<td>{DRPDWN_CLASS}  <input type="checkbox" name="hide_inactive" value="1" /> {L_HIDE_INACTIVE}
+    </td>
+	<!-- ENDIF -->
+	</tr>
+      <tr class='row2'>
+		<td>{L_SUBJECT}</td>
+		<td>
+      <input type="text" name="subject" size="64" value="{MAIL_SUBJECT}" class="input" />
+    </td>
+	</tr>
+	<tr class='row1'>
+		<td colspan="2">
+			{L_BODY}<br/><br/>
+			<center>
+				<textarea cols="95" rows="20" name="body">{MAIL_BODY}</textarea>
+			
+			<br/><br/>
+			{L_EXPL_LEGENDE}</center><br/>
+			<table width="100%" border="0" cellspacing="1" cellpadding="2">
+  			<tr>
+    			<th align="center" colspan="2">{L_LEGENDE}</th>
+  			</tr>
+  			<tr>
+  				<td>{L_DKPNAME}: *DKP_NAME*</td>
+  				<td>{L_DKPLINK}: *EQDKP_LINK*</td>
+  			</tr>
+  			<tr>
+  				<td>{L_USERNAME}: *USERNAME*</td>
+  				<td>{L_DATE}: *DATE*</td>
+  			</tr>´
+  			<tr>
+  				<td>{L_AUTHOR}: *AUTHOR*</td>
+  				<td></td>
+  			</tr>
+  		</table>
+	</td>
+  	</tr>
+  	<tr>
+		<th align="center" colspan="2"><input type="submit" name="infosavebu" value="{L_SEND}" class="mainoption" /></th>
+	</tr>
+  </form>
+</table>
+<!-- ENDIF -->

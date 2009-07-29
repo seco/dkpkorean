@@ -1,1 +1,0 @@
-ALTER TABLE eqdkp_news ADD extended_message TEXT NOT NULL , ADD nocomments TINYINT( 4 ) NOT NULL , ADD news_permissions TINYINT( 4 ) NOT NULL ;

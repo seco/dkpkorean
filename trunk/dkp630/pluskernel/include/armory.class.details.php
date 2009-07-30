@@ -5,15 +5,15 @@
  * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
  * Began:       2008
- * Date:        $Date: 2009-07-03 15:38:13 +0200 (Fr, 03 Jul 2009) $
+ * Date:        $Date: 2009-07-30 10:15:57 +0900 (목, 30 7 2009) $
  * -----------------------------------------------------------------------
- * @author      $Author: ghoschdi $
+ * @author      $Author: crezol $
  * @copyright   2006-2008 Corgan - Stefan Knaak | Wallenium & the EQdkp-Plus Developer Team
  * @link        http://eqdkp-plus.com
  * @package     eqdkp-plus
- * @version     $Rev: 5151 $
+ * @version     $Rev: 5385 $
  * 
- * $Id: armory.class.details.php 5151 2009-07-03 13:38:13Z ghoschdi $
+ * $Id: armory.class.details.php 5385 2009-07-30 01:15:57Z crezol $
  */
 
 class ArmoryCharLoader
@@ -22,7 +22,8 @@ class ArmoryCharLoader
 	var $build		= '2508200701';
 	var $links		= array(
 										'eu'		=> 'http://eu.wowarmory.com/',
-										'us'		=> 'http://www.wowarmory.com/'
+										'us'		=> 'http://www.wowarmory.com/',
+										'kr'    => 'http://kr.wowarmory.com/',
 									);
 	
 	function ArmoryCharLoader($utf8test)
@@ -45,9 +46,14 @@ class ArmoryCharLoader
 	
 	function BuildLink($loc, $user, $server, $mode='char')
 	{
-		$server = ($this->isUTF8) ? stripslashes(rawurlencode($server)) : stripslashes(rawurlencode(utf8_encode($server)));
-		$user = ($this->isUTF8) ? stripslashes(rawurlencode($user)) : stripslashes(rawurlencode(utf8_encode($user)));
-		
+    if($loc == 'kr')
+    {
+  		$server = ($this->isUTF8) ? stripslashes(rawurlencode($server)) : stripslashes(rawurlencode(mb_convert_encoding($server,"UTF-8","EUC-KR")));
+  		$user = ($this->isUTF8) ? stripslashes(rawurlencode($user)) : stripslashes(rawurlencode(mb_convert_encoding($user,"UTF-8","EUC-KR")));
+    }else{
+  		$server = ($this->isUTF8) ? stripslashes(rawurlencode($server)) : stripslashes(rawurlencode(utf8_encode($server)));
+  		$user = ($this->isUTF8) ? stripslashes(rawurlencode($user)) : stripslashes(rawurlencode(utf8_encode($user)));
+		}
 		if($mode == 'char')
 		{
 			$url = $this->links[$loc].'character-sheet.xml?r='.$server.'&n='.$user;

@@ -35,6 +35,15 @@ elseif ($conf_plus['pk_is_webdb']=='buffed')
 {
 	$GLOBALS["prio"][] = 'buffed';
 }
+elseif ($conf_plus['pk_is_webdb']=='inven')
+{
+	$GLOBALS["prio"][] = 'inven';	
+}
+elseif ($conf_plus['pk_is_webdb']=='armory_inven')
+{
+	$GLOBALS["prio"][] = 'armory';	
+	$GLOBALS["prio"][] = 'inven';
+}
 else  //default
 {
 	$GLOBALS["prio"][] = 'armory';
@@ -66,9 +75,18 @@ elseif ((($GLOBALS["prio"][0] == 'wowhead') or ($GLOBALS["prio"][0] == 'armory')
 		$GLOBALS["armory_lang"][]='de';
 		$GLOBALS["armory_lang"][]='en';
 		$GLOBALS["armory_lang"][]='fr';
+		$GLOBALS["armory_lang"][]='kr';
 	}
 	elseif($eqdkp->config['game_language'] == 'fr')
 	{
+		$GLOBALS["armory_lang"][]='fr';
+		$GLOBALS["armory_lang"][]='en';
+		$GLOBALS["armory_lang"][]='de';
+		$GLOBALS["armory_lang"][]='kr';
+	}
+	elseif($eqdkp->config['game_language'] == 'kr')
+	{
+		$GLOBALS["armory_lang"][]='kr';
 		$GLOBALS["armory_lang"][]='fr';
 		$GLOBALS["armory_lang"][]='en';
 		$GLOBALS["armory_lang"][]='de';
@@ -78,6 +96,7 @@ elseif ((($GLOBALS["prio"][0] == 'wowhead') or ($GLOBALS["prio"][0] == 'armory')
 		$GLOBALS["armory_lang"][]='en';
 		$GLOBALS["armory_lang"][]='de';
 		$GLOBALS["armory_lang"][]='fr';
+		$GLOBALS["armory_lang"][]='kr';
 	}
 
 	//EU / US

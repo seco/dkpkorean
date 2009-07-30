@@ -7,7 +7,7 @@
  * functions.php
  * begin: Tue December 17 2002
  *
- * $Id: functions.php 5150 2009-07-03 12:52:29Z ghoschdi $
+ * $Id: functions.php 5386 2009-07-30 02:01:02Z crezol $
  *
  ******************************/
 
@@ -553,7 +553,7 @@ function redirect($url, $return = false, $extern=false)
         echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">';
         echo '<html>';
         echo '<head>';
-        echo '<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">';
+        echo '<meta http-equiv="Content-Type" content="text/html; charset='.$lang['ENCODING'].'">';
         echo '<meta http-equiv="refresh" content="0; url=' . str_replace('&', '&amp;', $location) .'">';
         echo '<title>Redirect</title>';
         echo '</head>';
@@ -627,7 +627,12 @@ function news_parse(&$message)
     global $user, $eqdkp, $SID, $pm, $eqdkp_hooks, $conf_plus, $bbcode, $eqdkp_root_path;
     
     // Security: Do not allow html Tags and javascript
-    $message = htmlentities(strip_tags($message), ENT_QUOTES);
+
+    if ($user->lang['ENCODING'] == 'EUC-KR'){
+      $message = htmlspecialchars(strip_tags($message), ENT_QUOTES);
+    }else{
+      $message = htmlentities(strip_tags($message), ENT_QUOTES);
+    }
     
     // Video Links
     $message = $bbcode->EmbeddedVideo($message);

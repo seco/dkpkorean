@@ -5,7 +5,7 @@
  * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
  * Began:       2008
- * Date:        $Date: 2008-12-24 16:37:34 +0100 (Mi, 24 Dez 2008) $
+ * Date:        $Date: 2008-12-25 00:37:34 +0900 (목, 25 12 2008) $
  * -----------------------------------------------------------------------
  * @author      $Author: ghoschdi $
  * @copyright   2006-2008 Corgan - Stefan Knaak | Wallenium & the EQdkp-Plus Developer Team

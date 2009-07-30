@@ -5,7 +5,7 @@
  * Link:		    http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
  * Began:       2008
- * Date:        $Date: 2009-05-11 01:09:41 +0200 (Mo, 11 Mai 2009) $
+ * Date:        $Date: 2009-05-11 08:09:41 +0900 (월, 11 5 2009) $
  * -----------------------------------------------------------------------
  * @author      $Author: osr-corgan $
  * @copyright   2006-2008 Corgan - Stefan Knaak | Wallenium & the EQdkp-Plus Developer Team
@@ -346,7 +346,7 @@ while ($row = $db->fetch_record($result) )
 	$v2_622 = intval(str_replace('.','','0.6.2.2'));
 	$v2_623 = intval(str_replace('.','','0.6.2.3'));
   	$v2_624 = intval(str_replace('.','','0.6.2.4'));
-  	$v2_626 = intval(str_replace('.','','0.6.3.0'));
+  	$v2_626 = intval(str_replace('.','','0.6.2.7'));
   
 	if ($v1 >= $v2_616){$a_system['616']['state'] = 1 ;	}
 	if ($v1 >= $v2_620){$a_system['620']['state'] = 1 ;}

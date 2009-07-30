@@ -5,7 +5,7 @@
 |		modded by Corgan for EQdkp Plus
 |		Add WoWHead & Armory Support
 |
-|		$Id: updateitem.php 4259 2009-03-17 14:39:23Z hoofy_leon $
+|		$Id: updateitem.php 5385 2009-07-30 01:15:57Z crezol $
 +---------------------------------------------------------------+
 
 */
@@ -41,7 +41,7 @@ if (!defined('ITEMSTATS_DEBUG'))
         {
 		    header('Refresh: 0; URL=' . $_SERVER['HTTP_REFERER']);
         }
-		echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><meta http-equiv="refresh" content="0; url=' . $_SERVER['HTTP_REFERER'] . '"><title>Redirect</title></head><body><div align="center">If your browser does not support meta redirection please click <a href="' . $_SERVER['HTTP_REFERER'] . '">HERE</a> to be redirected</div></body></html>';
+		echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><meta http-equiv="Content-Type" content="text/html; charset='.$lang['ENCODING'].'"><meta http-equiv="refresh" content="0; url=' . $_SERVER['HTTP_REFERER'] . '"><title>Redirect</title></head><body><div align="center">If your browser does not support meta redirection please click <a href="' . $_SERVER['HTTP_REFERER'] . '">HERE</a> to be redirected</div></body></html>';
 	}
 	else
 	{

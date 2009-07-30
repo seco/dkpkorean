@@ -140,7 +140,13 @@ class ParseArmory
 		$fixed_name = implode(' ', preg_split ("/[\s\+]+/", urldecode($name)));
 
 		// encode the name so it can be used to build the url
+    // add kr condition
+    if ($language == 'kr'){
+ 		$encoded_name = urlencode(mb_convert_encoding($fixed_name,"UTF-8","EUC-KR"));//rawurlencode($fixed_name);
+  	}else{
 		$encoded_name = urlencode(utf8_encode($fixed_name));//rawurlencode($fixed_name);
+  	}
+
 		$encoded_name = str_replace('+' , '%20' , $encoded_name);
         $encoded_name = str_replace(' ' , '%20' , $encoded_name);
 
@@ -165,7 +171,8 @@ class ParseArmory
 		{
 			if ($category['name'] == 'ITEM')
 			{
-				if(strtolower($category['attr']['NAME']) == strtolower(utf8_encode($fixed_name)))
+				if(strtolower($category['attr']['NAME']) == strtolower(utf8_encode($fixed_name))
+				  || strtolower($category['attr']['NAME']) == strtolower(mb_convert_encoding($fixed_name,"UTF-8","EUC-KR")))
 				{
                 	$items_idxs[] = $i;
 				}
@@ -191,7 +198,9 @@ class ParseArmory
 				$previous = array('rarity' => $rarity, 'id' => $id);
 			}
 
-			$found_name = str_replace(chr(160),' ',$found_name);
+			if ($language != 'kr'){
+			  $found_name = str_replace(chr(160),' ',$found_name);
+			}
 
 			if ($item_id != -1)
 			{
@@ -499,8 +508,12 @@ class ParseArmory
 			$k = strtoupper($k);
 			if ($properties[$k])
 			{
-			   $properties['HTMLTOOLTIP']['data'] .= "<span class=\"q2\">".$tooltip[$c]." ".$properties[$k]['data']."</span><br/>";
-            }
+          if ($language == 'kr'){
+    			   $properties['HTMLTOOLTIP']['data'] .= "<span class=\"q2\">".$tooltip[$c]." ".$properties[$k]['data'].mb_convert_encoding('만큼 증가합니다.',"UTF-8","EUC-KR")."</span><br/>";
+    			}else{
+    			   $properties['HTMLTOOLTIP']['data'] .= "<span class=\"q2\">".$tooltip[$c]." ".$properties[$k]['data']."</span><br/>";
+          }
+      }
 		}
 
         if ($properties['SPELLDATA'])
@@ -581,6 +594,18 @@ class ParseArmory
 				$_lang['is_pvp']    					= 'PVP-Belohnung';
 				$_lang['is_world']	    				= 'WorldDrop';
 				$_lang['is_reput']	    				= 'Rufbelohnung';
+        	}
+
+         	if($language=='kr')
+        	{
+				$_lang['is_from']    					= mb_convert_encoding('획득처',"UTF-8","EUC-KR");
+				$_lang['is_vendor']    					= mb_convert_encoding('상점',"UTF-8","EUC-KR");
+				$_lang['is_Boss']    					= mb_convert_encoding('보스',"UTF-8","EUC-KR");
+				$_lang['is_Droprate']    				= mb_convert_encoding('획득률',"UTF-8","EUC-KR");
+				$_lang['is_crafted']    				= mb_convert_encoding('제작',"UTF-8","EUC-KR");
+				$_lang['is_pvp']    					= mb_convert_encoding('PVP보상',"UTF-8","EUC-KR");
+				$_lang['is_world']	    				= mb_convert_encoding('월드드랍',"UTF-8","EUC-KR");
+				$_lang['is_reput']	    				= mb_convert_encoding('평판',"UTF-8","EUC-KR");
         	}
 
         	$from = str_replace('sourceType.','',$properties['ITEMSOURCE']['attr']['VALUE']) ;
@@ -722,19 +747,34 @@ class ParseArmory
 
 		foreach (array_keys($item) as $key)
 		{
+		if ($language == "kr"){
+		  
+		  $item[$key] = mb_convert_encoding($item[$key],"EUC-KR","UTF-8");
+		  if (DECODE_UTF8 == true)
+		  {
+		  	$item[$key] = mb_convert_encoding($item[$key],"EUC-KR","UTF-8");
+           }
+    }else{
 		  $item[$key] = utf8_decode($item[$key]);
 		  if (DECODE_UTF8 == true)
 		  {
 		  	$item[$key] = utf8_decode($item[$key]);
-           }
-        }
+           }      
+    }
+    }
 
         if (DECODE_UTF8 == true)
         {
-           $item['name'] = utf8_decode($item['name']);
+          if ($language == "kr"){
+            $item['name'] = mb_convert_encoding($item['name'],"EUC-KR","UTF-8");
+          }else{
+            $item['name'] = utf8_decode($item['name']);
+          }
         }
 
-        $item['name'] = str_replace(chr(160),' ',$item['name']);
+        if ($language != "kr"){
+          $item['name'] = str_replace(chr(160),' ',$item['name']);
+        }
 
 		return $item;
 	}

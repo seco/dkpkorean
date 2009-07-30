@@ -5,7 +5,7 @@
 |		modded by Corgan for EQdkp Plus
 |		Add WoWHead & Armory Support
 |
-|		$Id: config.php 4607 2009-04-16 09:46:18Z hoofy_leon $
+|		$Id: config.php 5385 2009-07-30 01:15:57Z crezol $
 +---------------------------------------------------------------+
 */
 // Change this to true and edit the lines below
@@ -17,7 +17,7 @@ if ($use_own_vars == true)
 {
 	// EDIT IF USE_OWN_VARS == TRUE
 	// The location and extension type for the Icon store.
-	define('ICON_STORE_LOCATION', 'http://www.buffed.de/images/wow/32/');
+	define('ICON_STORE_LOCATION', 'http://wowdata.buffed.de/img/icons/wow/32/');
 	define('ICON_EXTENSION', '.png');
 
 	// Database config

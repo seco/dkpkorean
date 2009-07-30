@@ -5,15 +5,15 @@
  * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
  * Began:       2006
- * Date:        $Date: 2009-07-04 13:09:44 +0200 (Sa, 04 Jul 2009) $
+ * Date:        $Date: 2009-07-30 10:15:57 +0900 (목, 30 7 2009) $
  * -----------------------------------------------------------------------
- * @author      $Author: sz3 $
+ * @author      $Author: crezol $
  * @copyright   2006-2008 Corgan - Stefan Knaak | Wallenium & the EQdkp-Plus Developer Team
  * @link        http://eqdkp-plus.com
  * @package     eqdkp-plus
- * @version     $Rev: 5160 $
+ * @version     $Rev: 5385 $
  *
- * $Id: settings.php 5160 2009-07-04 11:09:44Z sz3 $
+ * $Id: settings.php 5385 2009-07-30 01:15:57Z crezol $
  */
 
 define('EQDKP_INC', true);
@@ -36,7 +36,8 @@ $tabs = new Tabs();
 $itemstats_language = array(
 	'german'							=> $plang['pk_german'],
 	'english'							=> $plang['pk_english'],
-	'french'							=> $plang['pk_french']
+	'french'							=> $plang['pk_french'],
+	'korean'              => $plang['pk_korean'],
 );
 
 // Build the Dropdown Arrays:
@@ -63,7 +64,8 @@ $a_itemstats_site= array(
 	'wowhead'          => "wowhead",
 	'thottbot'         => "thottbot",
 	'judgehype'        => "judgehype",
-	'wowdbu'           => "wowdbu"
+	'wowdbu'           => "wowdbu",
+	'inven'            => "inven",
 );
 
 	//Databases for Itemsearch
@@ -72,7 +74,9 @@ $a_itemstats_kombis= array(
 	'wowhead_armory'   => "WoWHead & Armory",
 	'armory'   		   => "armory",
 	'wowhead'   	   => "wowhead",
-	'buffed'           => "buffed"	
+	'buffed'           => "buffed"	,
+	'inven'            => "Inven(KR)",
+	'armory_inven'     => "Armory & Inven",
 );
 
 //Itemstats allakhazam Language
@@ -93,6 +97,7 @@ $a_Item_default_language= array(
 	'en'						=> "en",
 	'de'						=> "de",
 	'fr'						=> "fr",
+	'kr'						=> "kr",
 );
 
 //Item default language
@@ -122,7 +127,8 @@ $a_rss_style = array(
 
 $a_rss_lang = array(
 	'de'				=> $plang['pk_set_Show_rss_lang_de'],
-	'eng'				=> $plang['pk_set_Show_rss_lang_eng']
+	'eng'				=> $plang['pk_set_Show_rss_lang_eng'],
+	'kr'				=> $plang['pk_set_Show_rss_lang_kr'],
 
 );
 
@@ -355,6 +361,7 @@ if ($_POST['save_plus']){
    {
 		include_once('include/wow/server_eu.php');
 		include_once('include/wow/server_us.php');
+		include_once('include/wow/server_kr.php');
 
 		//Autocomplete
 

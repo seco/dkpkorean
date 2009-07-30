@@ -1,0 +1,90 @@
+ * Project:     EQdkp RaidBanker
+ * License:     Creative Commons - Attribution-Noncommercial-Share Alike 3.0 Unported
+ * Link:		    http://creativecommons.org/licenses/by-nc-sa/3.0/
+ * -----------------------------------------------------------------------
+ * Began:       2005
+ * Date:        $Date: 2009-03-04 00:38:08 +0100 (Mi, 04 Mrz 2009) $
+ * -----------------------------------------------------------------------
+ * @author      $Author: wallenium $
+ * @copyright   2005-2008 Simon (Wallenium) Wallmann
+ * @link        http://eqdkp-plus.com
+ * @package     raidbanker
+ * @version     $Rev: 4089 $
+ * 
+ * $Id: changelog.txt 4089 2009-03-03 23:38:08Z wallenium $
+
+Changelog
+--------------------------------------------------------------------------------------------------
+2.0.3 [03/04/2009]
+  Implemented - [#1479] Add RaidBanker Menu Icon
+  Implemented - [#1480] Remove Database Globals
+
+2.0.2 [01/09/2009]
+  Fixed - [#1367] Import of large gold amounts impossible
+
+2.0.1 [11/21/2008]
+  Implemented - [#1265] Use Library instead of wpfc
+  Fixed - [#1266] No gold Output larger than 2 digits
+
+2.0.0 [11/09/2008]
+  Implemented - [#1215] Add new PLUS templates
+  Implemented - [#1216] Dynamic Currency for multigame Support
+  Implemented - [#1217] Add new updater2 class for better upgrades
+  Implemented - [#1218] Remove own page header, use minimalistic of eqdkp
+  Implemented - [#1220] Hide itemstats settings in Eqdkp Plus
+  Implemented - [#1221] Restyle Item Information Dialog
+  Implemented - [#1247] Clean up the banker page for faster loading times
+
+1.1.0 [06/13/2007]
+	Fixed - [#455] Spenden werden bei jedem Bankier verbucht
+	Implemented - [#98] Show Bank-Owner of an Item in the bubble
+	Implemented - [#453] Atomatic permission setup for person who installs
+	Implemented - [#454] Setup: Disable Itemstats if not found
+	Implemented - [#475] Overlib instead of Prototype Bubble
+	Implemented - [#476] Decentral Templates for easier updates
+	Implemented - [#477] Remove old, unused Javascript code
+
+
+1.0.3 [03/18/2007]
+	Fixed - [#351] Use Plugin Dev Framework instead of hardcoed upd. check
+	Implemented - [#350] Update JS WIndow Class to 1.0
+
+1.0.2 [02/19/2007]
+	Fixed - [#352] Click on item should open the popup, not an link
+	Fixed - [#353] Double link fix/ eqdkp 1.3.2 compatinility
+
+1.0.1 [10/28/2006]
+	Fixed - [#29] doubble links in administration menu
+	Fixed - [#134] Add Updatecheck 2.0/ Bugfix: fsock instead of fopen
+	Fixed - [#137] Info Tooltips don't show
+	Fixed - [#140] if Itemlist.xml is placed in includes/ folder,  -> error (URL)
+	Implemented - [#138] Old Style display of bank, every item & banker
+
+
+1.0.0 [10/26/2006]
+  Fixed - [#22] Admin Menu should be on left side during import
+	Fixed - [#26] Set Tooltip Text Color to Black
+	Fixed - [#27] change bank: forgotten echo (sql statment)
+	Fixed - [#28] wrong link location (item links)
+	Fixed - [#33] IE-Bug: Manage doesn&#039;t work
+	Fixed - [#36] convert all themes for b3
+	Fixed - [#42] cant add banker
+	Fixed - [#49] Money is not correctly displayed
+	Fixed - [#114] xml itemlist translation into DE
+	Implemented - [#11] Add items to raidbanker (manual add)
+	Implemented - [#12] sperate Database Layout
+	Implemented - [#13] Priority System
+	Implemented - [#16] option to choose if DKP or items for an item of the bank
+	Implemented - [#17] invoice system
+	Implemented - [#18] Total bank holdings
+	Implemented - [#19] New Layout, with filters and so on
+	Implemented - [#20] Add actions to the Logfile
+	Implemented - [#21] Manually add bankers
+	Implemented - [#23] Option to enable/disbale the bank holdings
+	Implemented - [#24] move filter settings to functions.php
+	Implemented - [#25] Disable the toolitps
+	Implemented - [#32] Add Mainchar &amp; note to bank
+	Implemented - [#34] Credits-Dialogue
+	Implemented - [#38] Option for automatic dkp adjustment
+	Implemented - [#39] automatic change of amount on item donnations/receive
+

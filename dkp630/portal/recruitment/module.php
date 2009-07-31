@@ -5,15 +5,15 @@
  * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
  * Began:       2008
- * Date:        $Date: 2009-07-02 07:26:36 +0900 (목, 02 7 2009) $
+ * Date:        $Date: 2009-03-15 22:25:08 +0100 (So, 15 Mrz 2009) $
  * -----------------------------------------------------------------------
  * @author      $Author: osr-corgan $
  * @copyright   2006-2008 Corgan - Stefan Knaak | Wallenium & the EQdkp-Plus Developer Team
  * @link        http://eqdkp-plus.com
  * @package     eqdkp-plus
- * @version     $Rev: 5135 $
+ * @version     $Rev: 4220 $
  * 
- * $Id: module.php 5135 2009-07-01 22:26:36Z osr-corgan $
+ * $Id: module.php 4220 2009-03-15 21:25:08Z osr-corgan $
  */
 
 
@@ -45,7 +45,7 @@ if(!function_exists(recruitment_module))
 	function recruitment_module()
   	{
   		global $conf_plus,$db,$user,$tpl,$eqdkp,$user,$eqdkp_root_path,$html, $plang,$pm,$pcache;
-  		  		
+	  		
 		// RSS Feed
 		include_once($eqdkp_root_path."libraries/UniversalFeedCreator/UniversalFeedCreator.class.php");
 		$rss = new UniversalFeedCreator();

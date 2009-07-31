@@ -5,15 +5,15 @@
  * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
  * Began:       2008
- * Date:        $Date: 2009-03-24 23:07:09 +0900 (화, 24 3 2009) $
+ * Date:        $Date: 2008-08-02 14:44:02 +0200 (Sa, 02 Aug 2008) $
  * -----------------------------------------------------------------------
- * @author      $Author: hoofy_leon $
+ * @author      $Author: osr-corgan $
  * @copyright   2006-2008 Corgan - Stefan Knaak | Wallenium & the EQdkp-Plus Developer Team
  * @link        http://eqdkp-plus.com
  * @package     eqdkp-plus
- * @version     $Rev: 4377 $
- *
- * $Id: module.php 4377 2009-03-24 14:07:09Z hoofy_leon $
+ * @version     $Rev: 2476 $
+ * 
+ * $Id: module.php 2476 2008-08-02 12:44:02Z osr-corgan $
  */
 
 if ( !defined('EQDKP_INC') ){
@@ -23,7 +23,7 @@ if ( !defined('EQDKP_INC') ){
 $portal_module['rankimage'] = array(
 	'name'			    => 'RankImage Module',
 	'path'			    => 'rankimage',
-	'version'		    => '1.0.2',
+	'version'		    => '1.0.1',
 	'author'        => 'Corgan',
 	'contact'		    => 'http://www.eqdkp-plus.com',
 	'description'   => 'Rank Images',
@@ -60,20 +60,20 @@ if(!function_exists(rankimage_module))
 {
   function rankimage_module(){
   	global $tpl, $eqdkp,$eqdkp_root_path,$conf_plus ,$user;
-
+  
   		if (isset($conf_plus['pk_ts_ranking_url']) && isset($conf_plus['pk_ts_ranking_link']))
   		{
   			$out .= '<table width="100%" border="0" cellspacing="1" cellpadding="2" class="noborder">';
   			$out .= '<tr ><td align=center>';
-
-  			if($conf_plus['pk_ts_bosskillers']==true)
+  			
+  			if($conf_plus['pk_ts_bosskillers']==true) 
   			{
   				$pyyri_tmp=$conf_plus['pk_ts_ranking_url'];
   				$pyyri_tmp=str_replace('&lt;', '<', $pyyri_tmp);
   				$pyyri_tmp=str_replace('&gt;', '>', $pyyri_tmp);
   				$pyyri_tmp=str_replace('&quot;', '"', $pyyri_tmp);
   				$out .= $pyyri_tmp;
-  			} else
+  			} else 
   			{
 	  			if(strlen($conf_plus['pk_ts_ranking_link'] > 0) || $conf_plus['pk_ts_ranking_link'])
 	  			{
@@ -86,7 +86,7 @@ if(!function_exists(rankimage_module))
 	    		$out .= '</td></tr>';
 	    		$out .= '</table>';
 	    		return $out;
-
+	    		
 	    }
   }
 }

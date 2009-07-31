@@ -33,36 +33,36 @@ if ($_GET['search_item'] != '') {
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://wowdata.buffed.de/?f='.$search_item);
+    $url = 'http://wowdata.buffed.de/?f='.$search_item;
   } elseif ($_GET['search_db'] == 2){
     $search_item = utf8_encode($_GET['search_item']);
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://de.wowhead.com/?search='.$search_item);
+    $url = 'http://de.wowhead.com/?search='.$search_item;
   } elseif ($_GET['search_db'] == 3){
     $search_item = utf8_encode($_GET['search_item']);
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://speedydragon.gamestar.de/search?query='.$search_item);
+    $url = 'http://speedydragon.gamestar.de/search?query='.$search_item;
   } elseif ($_GET['search_db'] == 4){
     $search_item = utf8_encode($_GET['search_item']);
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://eu.wowarmory.com/search.xml?searchQuery='.$search_item.'&searchType=all');
+    $url = 'http://eu.wowarmory.com/search.xml?searchQuery='.$search_item.'&searchType=all';
   } elseif ($_GET['search_db'] == 5){
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $_GET['search_item']);
-    $url = rawurlencode('http://thottbot.com/?s='.$search_item);
+    $url = 'http://thottbot.com/?s='.$search_item;
   } elseif ($_GET['search_db'] == 6){
     $search_item = utf8_encode($_GET['search_item']);
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://www.wowdb.com/search.aspx?search_text='.$search_item);
+    $url = 'http://www.wowdb.com/search.aspx?search_text='.$search_item;
   }
 
   // Warhammer
@@ -71,19 +71,19 @@ if ($_GET['search_item'] != '') {
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://wardata.buffed.de/?f='.$search_item);
+    $url = 'http://wardata.buffed.de/?f='.$search_item;
   } elseif ($_GET['search_db'] == 11){
     $search_item = utf8_encode($_GET['search_item']);
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://www.wardb.com/search.aspx?search_text='.$search_item);
+    $url = 'http://www.wardb.com/search.aspx?search_text='.$search_item;
   } elseif ($_GET['search_db'] == 12){
     $search_item = utf8_encode($_GET['search_item']);
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://war.allakhazam.com/search.html?q='.$search_item);
+    $url = 'http://war.allakhazam.com/search.html?q='.$search_item;
   } 
   
   // LotRO
@@ -92,19 +92,19 @@ if ($_GET['search_item'] != '') {
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://lotro.allakhazam.com/search.html?q='.$search_item);
+    $url = 'http://lotro.allakhazam.com/search.html?q='.$search_item;
   } elseif ($_GET['search_db'] == 41){
     $search_item = utf8_encode($_GET['search_item']);
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://glingorn.de/index.php?page=search_result&searchstring='.$search_item);    
+    $url = urlencode('http://glingorn.de/index.php?page=search_result&searchstring='.$search_item);    
   } elseif ($_GET['search_db'] == 42){
     $search_item = utf8_encode($_GET['search_item']);
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://lorebook.lotro.com/wiki/Special:Advancedsearch?type=item&action=search&item_type%5B%5D=all&name='.$search_item.'&desc=&min_i_level=&max_i_level=&min_r_level=&max_r_level=&min_armour=&max_armour=&min_dps=&max_dps=&min_damage=&max_damage=&min_speed=&max_speed=&min_slayer_bonus=&max_slayer_bonus=&x=0&y=0');    
+    $url = urlencode('http://lorebook.lotro.com/wiki/Special:Advancedsearch?type=item&action=search&item_type%5B%5D=all&name='.$search_item.'&desc=&min_i_level=&max_i_level=&min_r_level=&max_r_level=&min_armour=&max_armour=&min_dps=&max_dps=&min_damage=&max_damage=&min_speed=&max_speed=&min_slayer_bonus=&max_slayer_bonus=&x=0&y=0');    
   }
   
   // Everquest2
@@ -113,7 +113,7 @@ if ($_GET['search_item'] != '') {
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://www.lootdb.com/?t=item&q='.$search_item);
+    $url = 'http://www.lootdb.com/?t=item&q='.$search_item;
   }
 	
 	// Runes of Magic
@@ -122,7 +122,7 @@ if ($_GET['search_item'] != '') {
     $replace = array("\'", '\"', " ");
     $newstring = array("%27", "%22", "+");
     $search_item = str_replace($replace, $newstring, $search_item);
-    $url = rawurlencode('http://romdata.buffed.de/?f='.$search_item); 
+    $url = 'http://romdata.buffed.de/?f='.$search_item;    
   }
 	
   if ($conf_plus['pm_quicksearch_newwindow'] != 1){
@@ -131,4 +131,4 @@ if ($_GET['search_item'] != '') {
     header("Location: ".$url);
   }
 }
-?>
+?> 

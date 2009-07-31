@@ -24,7 +24,7 @@ if ( !defined('EQDKP_INC') ){
 $portal_module['advertising'] = array(                      			// the same name as the folder!
 			'name'			    => 'Advertising Modul',             // The name to show
 			'path'			    => 'advertising',                   // Folder name again
-			'version'		    => '1.0.1',                         // Version
+			'version'		    => '1.0.0',                         // Version
 			'author'        	=> 'Corgan',                     // Author
 			'contact'		    => 'http://www.eqdkp-plus.com',     // email adress
 			'description'   	=> 'Add your own Advertising',          // Detailed Description

@@ -5,15 +5,15 @@
  * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
  * Began:       2008
- * Date:        $Date: 2009-07-01 07:46:35 +0900 (수, 01 7 2009) $
+ * Date:        $Date: 2008-08-02 14:44:02 +0200 (Sa, 02 Aug 2008) $
  * -----------------------------------------------------------------------
  * @author      $Author: osr-corgan $
  * @copyright   2006-2008 Corgan - Stefan Knaak | Wallenium & the EQdkp-Plus Developer Team
  * @link        http://eqdkp-plus.com
  * @package     eqdkp-plus
- * @version     $Rev: 5132 $
+ * @version     $Rev: 2476 $
  * 
- * $Id: module.php 5132 2009-06-30 22:46:35Z osr-corgan $
+ * $Id: module.php 2476 2008-08-02 12:44:02Z osr-corgan $
  */
 
 if ( !defined('EQDKP_INC') ){
@@ -23,7 +23,7 @@ if ( !defined('EQDKP_INC') ){
 $portal_module['lastraids'] = array(
 			'name'			    => 'LastRaids Module',
 			'path'			    => 'lastraids',
-			'version'		    => '1.0.1',
+			'version'		    => '1.0.0',
 			'author'        	=> 'Corgan',
 			'contact'		    => 'http://www.eqdkp-plus.com',
 			'description'   	=> 'Information on last raids',
@@ -63,69 +63,64 @@ if(!function_exists(lastraids_module))
 {
 	function lastraids_module()
   	{
-  		global $eqdkp_root_path , $user, $eqdkp,$tpl,$conf_plus,$html, $plang,$conf_plus, $pdc;
+  		global $eqdkp_root_path , $user, $eqdkp,$tpl,$conf_plus,$html, $plang,$conf_plus;
 
-  		$out = $pdc->get('dkp.portal.modul.lastraids',false,true);
-  		if (!$out) 
-  		{  			  		
-			include_once($eqdkp_root_path.'pluskernel/bridge/bridge_class.php');
-			$br = new eqdkp_bridge();
-	
-			$limit = ($conf_plus['pk_last_raids_limit'] > 0)  ? $conf_plus['pk_last_raids_limit'] : 5 ;
-			$lastraids= $br->get_last_Group_Raids($limit);
-	
-			if (is_array($lastraids))
+		include_once($eqdkp_root_path.'pluskernel/bridge/bridge_class.php');
+		$br = new eqdkp_bridge();
+
+		$limit = ($conf_plus['pk_last_raids_limit'] > 0)  ? $conf_plus['pk_last_raids_limit'] : 5 ;
+		$lastraids= $br->get_last_Group_Raids($limit);
+
+		if (is_array($lastraids))
+		{
+			$out = '<table width="100%" border="0" cellspacing="1" cellpadding="2" class="noborder">';
+
+			foreach ($lastraids as $raid)
 			{
-				$out = '<table width="100%" border="0" cellspacing="1" cellpadding="2" class="noborder">';
-	
-				foreach ($lastraids as $raid)
+				//Items
+				if (!$conf_plus['pk_set_lastraids_showloot'])
 				{
-					//Items
-					if (!$conf_plus['pk_set_lastraids_showloot'])
+					$item_icons = "";
+					$loot_limit = ($conf_plus['pk_lastraids_lootLimit'] > 0) ? $conf_plus['pk_lastraids_lootLimit'] : 7 ;
+					$raid_items = $br->get_last_items($loot_limit,$raid['raid_id']);
+					
+					if (is_array($raid_items))
 					{
-						$item_icons = "";
-						$loot_limit = ($conf_plus['pk_lastraids_lootLimit'] > 0) ? $conf_plus['pk_lastraids_lootLimit'] : 7 ;
-						$raid_items = $br->get_last_items($loot_limit,$raid['raid_id']);
-						
-						if (is_array($raid_items))
+						foreach($raid_items as $item)
 						{
-							foreach($raid_items as $item)
-							{
-								$item_icons .=  "<a href=".$eqdkp_root_path."viewitem.php?i=".$item['id'].">". $html->itemstats_item(stripslashes($item['name']),false,true)."</a>" ;										
-								$item_icons .= ($conf_plus['pk_itemstats'] == 1 ) ? '' : ' | ' ;							
-							}
+							$item_icons .=  "<a href=".$eqdkp_root_path."viewitem.php?i=".$item['id'].">". $html->itemstats_item(stripslashes($item['name']),false,true)."</a>" ;										
+							$item_icons .= ($conf_plus['pk_itemstats'] == 1 ) ? '' : ' | ' ;							
 						}
 					}
-	
-					$img = $eqdkp_root_path."games/".$eqdkp->config['default_game']."/events/".$raid['raid_icon'];
-					$img = (file_exists($img)) ? "<img src=".$img.">" : "" ;
-	
-					$class = $eqdkp->switch_row_class();
-					$out .= '<tr class="'.$class.'" nowrap onmouseover="this.className=\'rowHover\';" onmouseout="this.className=\''.$class.'\';">'.
-								"<td>
-									<table>
-										<tr>
-											<td valign=top>
-												<a href='".$eqdkp_root_path."viewraid.php?r=". $raid['raid_id']."'>
-												".$img."</a>
-												</a>
-											</td>
-											<td valign=top>
-												<a href='".$eqdkp_root_path."viewraid.php?r=". $raid['raid_id']."'>
-												".$raid['raid_name']."</a><br>".
-												strftime($user->style['strtime_date_short'], $raid['raid_date']).
-												"<p><span class=small> ".$raid['raid_note']."</span><br>".
-												$item_icons.
-											"</td>
-										</tr>
-									</table>
-								</td>
-							</tr>";
 				}
-				$out .= '</table>';
+
+				$img = $eqdkp_root_path."games/".$eqdkp->config['default_game']."/events/".$raid['raid_icon'];
+				$img = (file_exists($img)) ? "<img src=".$img.">" : "" ;
+
+				$class = $eqdkp->switch_row_class();
+				$out .= '<tr class="'.$class.'" nowrap onmouseover="this.className=\'rowHover\';" onmouseout="this.className=\''.$class.'\';">'.
+							"<td>
+								<table>
+									<tr>
+										<td valign=top>
+											<a href='".$eqdkp_root_path."viewraid.php?r=". $raid['raid_id']."'>
+											".$img."</a>
+											</a>
+										</td>
+										<td valign=top>
+											<a href='".$eqdkp_root_path."viewraid.php?r=". $raid['raid_id']."'>
+											".$raid['raid_name']."</a><br>".
+											strftime($user->style['strtime_date_short'], $raid['raid_date']).
+											"<p><span class=small> ".$raid['raid_note']."</span><br>".
+											$item_icons.
+										"</td>
+									</tr>
+								</table>
+							</td>
+						</tr>";
 			}
-			$pdc->put('dkp.portal.modul.lastraids',$out,86400,false,true);
-  		}	
+			$out .= '</table>';
+		}
 
 		return $out;
   }

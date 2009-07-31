@@ -5,15 +5,15 @@
  * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
  * Began:       2008
- * Date:        $Date: 2009-07-01 07:46:35 +0900 (수, 01 7 2009) $
+ * Date:        $Date: 2009-03-01 16:31:03 +0100 (So, 01 Mrz 2009) $
  * -----------------------------------------------------------------------
- * @author      $Author: osr-corgan $
+ * @author      $Author: wallenium $
  * @copyright   2006-2008 Corgan - Stefan Knaak | Wallenium & the EQdkp-Plus Developer Team
  * @link        http://eqdkp-plus.com
  * @package     eqdkp-plus
- * @version     $Rev: 5132 $
+ * @version     $Rev: 4039 $
  * 
- * $Id: module.php 5132 2009-06-30 22:46:35Z osr-corgan $
+ * $Id: module.php 4039 2009-03-01 15:31:03Z wallenium $
  */
 
 if ( !defined('EQDKP_INC') ){
@@ -23,7 +23,7 @@ if ( !defined('EQDKP_INC') ){
 $portal_module['dkpinfo'] = array(
 			'name'			    => 'DKPInfo Module',
 			'path'			    => 'dkpinfo',
-			'version'		    => '1.0.2',
+			'version'		    => '1.0.1',
 			'author'        => 'Corgan',
 			'contact'		    => 'http://www.eqdkp-plus.com',
 			'description'   => 'Detailed DKP Information',
@@ -38,38 +38,29 @@ $portal_module['dkpinfo'] = array(
 $portal_settings['dkpinfo'] = array(
 );
 
-if(!function_exists(dkpinfo_module))
-{
-  function dkpinfo_module()
-  {
-  	global $eqdkp , $user , $tpl, $db, $plang, $pdc;
+if(!function_exists(dkpinfo_module)){
+  function dkpinfo_module(){
+  	global $eqdkp , $user , $tpl, $db, $plang;
 
-  		$DKPInfo = $pdc->get('dkp.portal.modul.dkpinfo',false,true);
-  		if (!$DKPInfo) 
-  		{
+		$a_dkpinfo = array();
+		// Get total raids
+    	$sql ="SELECT count(*) as alle FROM __raids;";
+		$a_dkpinfo['raids'] = $db->query_first($sql);
 
-			$a_dkpinfo = array();
-			// Get total raids
-	    	$sql ="SELECT count(*) as alle FROM __raids;";
-			$a_dkpinfo['raids'] = $db->query_first($sql);
-	
-			// Get total players
-			$sql = "SELECT count(member_id) FROM __members";
-			$a_dkpinfo['member'] = $db->query_first($sql);
-	
-			// Get total items
-			$sql = "SELECT COUNT(item_id) FROM __items";
-			$a_dkpinfo['items'] = $db->query_first($sql);
-	
-			$DKPInfo = '<table width="100%" border="0" cellspacing="1" cellpadding="2" class="noborder">
-						<tr><td class="row1">'.$plang['portal_info_raids'].'</td><td class="row1">'. $a_dkpinfo['raids']. '</td></tr>
-						<tr><td class="row2">'.$plang['portal_info_player'].'</td><td class="row2">'. $a_dkpinfo['member']. '</td></tr>
-						<tr><td class="row1">'.$plang['portal_info_items'].'</td><td class="row1">'. $a_dkpinfo['items']. '</td></tr>
-						</table>
-						';
-			$pdc->put('dkp.portal.modul.dkpinfo',$DKPInfo,86400,false,true);
-  		}
-			
+		// Get total players
+		$sql = "SELECT count(member_id) FROM __members";
+		$a_dkpinfo['member'] = $db->query_first($sql);
+
+		// Get total items
+		$sql = "SELECT COUNT(item_id) FROM __items";
+		$a_dkpinfo['items'] = $db->query_first($sql);
+
+		$DKPInfo = '<table width="100%" border="0" cellspacing="1" cellpadding="2" class="noborder">
+					<tr><td class="row1">'.$plang['portal_info_raids'].'</td><td class="row1">'. $a_dkpinfo['raids']. '</td></tr>
+					<tr><td class="row2">'.$plang['portal_info_player'].'</td><td class="row2">'. $a_dkpinfo['member']. '</td></tr>
+					<tr><td class="row1">'.$plang['portal_info_items'].'</td><td class="row1">'. $a_dkpinfo['items']. '</td></tr>
+					</table>
+					';
 
 		return $DKPInfo;
   }
